@@ -52,6 +52,7 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
 
 <script>
     $.ajax({
@@ -59,7 +60,6 @@
         type: "GET",
         dataType: "JSON",
         success: function (data) {
-            console.log(data);
             if (data.statusCode && data.statusCode === 200) {
                 var brandInfo = data.data;
                 $('#brandName').text(brandInfo.name).removeClass('d-none');

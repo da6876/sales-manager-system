@@ -12,12 +12,13 @@ use Yajra\DataTables\DataTables;
 
 class PermissionController extends Controller
 {
-/*    public function __construct(){
-        $this->middleware('permission:permission_create',['only'=>['store']]);
-        $this->middleware('permission:permission_view',['only'=>['index']]);
-        $this->middleware('permission:permission_update',['only'=>['show']]);
-        $this->middleware('permission:permission_delete',['only'=>['destroy']]);
-    }*/
+    public function __construct()
+    {
+        $this->middleware('permission:create_permission', ['only' => ['create']]);
+        $this->middleware('permission:view_permission', ['only' => ['index']]);
+        $this->middleware('permission:update_permission', ['only' => ['edit']]);
+        $this->middleware('permission:delete_permission', ['only' => ['destroy']]);
+    }
 
     public function index()
     {

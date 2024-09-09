@@ -14,18 +14,23 @@ use Illuminate\Support\Str;
 
 class ProTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:create_pro_type', ['only' => ['create']]);
+        $this->middleware('permission:view_pro_type', ['only' => ['index']]);
+        $this->middleware('permission:update_pro_type', ['only' => ['edit']]);
+        $this->middleware('permission:delete_pro_type', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();
         return view('ProductSetup.type.show');
     }
-
     public function create()
     {
         $this->checkLogin();
         return view('ProductSetup.type.create');
     }
-
     public function edit($id)
     {
         $this->checkLogin();
@@ -33,7 +38,6 @@ class ProTypeController extends Controller
 
         return view('ProductSetup.type.edit', [ 'navItem' => $navItem]);
     }
-
     public function store(Request $request)
     {
         try {
@@ -109,7 +113,6 @@ class ProTypeController extends Controller
             ]);
         }
     }
-
     public function destroy($id){
         try {
             $permission = ProType::where('uid', $id)->first();
@@ -130,7 +133,6 @@ class ProTypeController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
         $query = DB::table('sms_protype as p')

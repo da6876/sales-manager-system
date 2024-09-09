@@ -14,12 +14,13 @@ use Yajra\DataTables\DataTables;
 
 class RolesController extends Controller
 {
-    /*public function __construct(){
-        $this->middleware('permission:role_create',['only'=>['store']]);
-        $this->middleware('permission:role_view',['only'=>['index']]);
-        $this->middleware('permission:role_update',['only'=>['show']]);
-        $this->middleware('permission:role_delete',['only'=>['destroy']]);
-    }*/
+    public function __construct()
+    {
+        $this->middleware('permission:create_roles', ['only' => ['create']]);
+        $this->middleware('permission:view_roles', ['only' => ['index']]);
+        $this->middleware('permission:update_roles', ['only' => ['edit']]);
+        $this->middleware('permission:delete_roles', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();
@@ -126,9 +127,11 @@ class RolesController extends Controller
     }
 
     public function getData(Request $request){
+        $singleDataShow = Role::where('name', '!=', 'Root')->get();
 
         $query = DB::table('roles')
-            ->select('id', 'name', 'guard_name', 'created_at', 'updated_at');
+            ->select('id', 'name', 'guard_name', 'created_at', 'updated_at')
+             ->where('name', '!=', 'Root');
 
         if (isset($request->search['value'])) {
             $query->where('name', 'like', '%' . $request->search['value'] . '%');

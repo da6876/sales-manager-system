@@ -11,29 +11,24 @@ use Illuminate\Support\Str;
 
 class SidebarNavController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
-        $this->middleware('permission:create_sidebarnav', ['only' => ['create']]);
-        $this->middleware('permission:view_sidebarnav', ['only' => ['index']]);
-        $this->middleware('permission:update_sidebarnav', ['only' => ['edit']]);
-        $this->middleware('permission:delete_sidebarnav', ['only' => ['destroy']]);
-    }*/
-
+        $this->middleware('permission:create_sidemenu', ['only' => ['create']]);
+        $this->middleware('permission:view_sidemenu', ['only' => ['index']]);
+        $this->middleware('permission:update_sidemenu', ['only' => ['edit']]);
+        $this->middleware('permission:delete_sidemenu', ['only' => ['destroy']]);
+    }
     public function index()
     {
-
         $this->checkLogin();
         return view('WebSetup.SidebarNav.showSidebarNav');
     }
-
     public function create()
     {
-
         $this->checkLogin();
         $prentMenu = SidebarNav::whereNull('parent_id')->get();
         return view('WebSetup.SidebarNav.createSidebarNav', ['prentMenu' => $prentMenu]);
     }
-
     public function edit($id)
     {
         $this->checkLogin();
@@ -44,7 +39,6 @@ class SidebarNavController extends Controller
 
         return view('WebSetup.SidebarNav.editSidebarNav', ['navItem' => $navItem, 'prentMenu' => $prentMenu]);
     }
-
     public function store(Request $request)
     {
         try {
@@ -130,7 +124,6 @@ class SidebarNavController extends Controller
             ));
         }
     }
-
     public function destroy($id)
     {
         try {
@@ -152,7 +145,6 @@ class SidebarNavController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
         // Fetch all items with their hierarchy

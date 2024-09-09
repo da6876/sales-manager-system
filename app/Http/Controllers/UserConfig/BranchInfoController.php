@@ -12,6 +12,13 @@ use Illuminate\Support\Str;
 
 class BranchInfoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:create_branch', ['only' => ['create']]);
+        $this->middleware('permission:view_branch', ['only' => ['index']]);
+        $this->middleware('permission:update_branch', ['only' => ['edit']]);
+        $this->middleware('permission:delete_branch', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();

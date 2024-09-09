@@ -1,6 +1,7 @@
 @extends('layout.appmain')
 @section('title', '- New Pro. Info')
-
+@section('style')
+@endsection
 @section('main')
 
     <main id="main" class="main">
@@ -26,7 +27,9 @@
                                 <h5 class="card-title">Add Pro. Info</h5>
                             </div>
                             <div class="col-md-2 mt-3 ">
-                                <a href="{{route('ProInfo.index')}}" type="button" class="btn btn-outline-info btn-sm text-right"> Back <i class="bi bi-arrow-left-short"></i></a>
+                                <a href="{{route('ProInfo.index')}}" type="button"
+                                   class="btn btn-outline-info btn-sm text-right"> Back <i
+                                        class="bi bi-arrow-left-short"></i></a>
                             </div>
                         </div>
 
@@ -44,7 +47,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="details" class="form-label">Details</label>
-                                <textarea id="details" name="details" class="form-control" ></textarea>
+                                <textarea id="details" name="details" class="form-control"></textarea>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="col-md-3">
@@ -87,7 +90,6 @@
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
-
                             <div class="col-md-4">
                                 <label for="price_mrp" class="form-label">Price MRP</label>
                                 <input type="text" class="form-control" id="price_mrp" name="price_mrp">
@@ -110,41 +112,49 @@
                             <div class="container col-md-3">
                                 <div class="col-md-6">
                                     <label for="logo1" class="form-label">Image 1 :</label>
-                                    <input type="file" class="form-control" id="image1" name="image1" onchange="preview(1)" accept="image/*">
+                                    <input type="file" class="form-control" id="image1" name="image1"
+                                           onchange="preview(1)" accept="image/*">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <img id="logoPreview1" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview" style="width: 100%; height: 100px;"/>
+                                    <img id="logoPreview1" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview"
+                                         style="width: 100%; height: 100px;"/>
                                 </div>
                             </div>
                             <div class="container col-md-3">
                                 <div class="col-md-6">
                                     <label for="logo2" class="form-label">Image 2 :</label>
-                                    <input type="file" class="form-control" id="image2" name="image2" onchange="preview(2)" accept="image/*">
+                                    <input type="file" class="form-control" id="image2" name="image2"
+                                           onchange="preview(2)" accept="image/*">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <img id="logoPreview2" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview" style="width: 100%; height: 100px;"/>
+                                    <img id="logoPreview2" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview"
+                                         style="width: 100%; height: 100px;"/>
                                 </div>
                             </div>
                             <div class="container col-md-3">
                                 <div class="col-md-6">
                                     <label for="logo3" class="form-label">Image 3 :</label>
-                                    <input type="file" class="form-control" id="image3" name="image3" onchange="preview(3)" accept="image/*">
+                                    <input type="file" class="form-control" id="image3" name="image3"
+                                           onchange="preview(3)" accept="image/*">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <img id="logoPreview3" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview" style="width: 100%; height: 100px;"/>
+                                    <img id="logoPreview3" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview"
+                                         style="width: 100%; height: 100px;"/>
                                 </div>
                             </div>
                             <div class="container col-md-3">
                                 <div class="col-md-6">
                                     <label for="logo4" class="form-label">Image 4 :</label>
-                                    <input type="file" class="form-control" id="image4" name="image4" onchange="preview(4)" accept="image/*">
+                                    <input type="file" class="form-control" id="image4" name="image4"
+                                           onchange="preview(4)" accept="image/*">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <img id="logoPreview4" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview" style="width: 100%; height: 100px;"/>
+                                    <img id="logoPreview4" src="{{asset('assets/img/dummy.jpg')}}" alt="Image Preview"
+                                         style="width: 100%; height: 100px;"/>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -153,7 +163,6 @@
                             </div>
                         </form>
                         <!-- End Multi Columns Form -->
-
                     </div>
                 </div>
             </div>
@@ -163,44 +172,79 @@
     <!-- End #main -->
 @endsection
 @section('script')
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
     <script>
+        ClassicEditor
+            .create(document.querySelector('#details'))
+            .then(editor => {
+                editorInstance = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
         function addData() {
-            url = "{{ url('ProInfo') }}";
+            // Check if editorInstance is defined and has a valid instance
+            if (!editorInstance) {
+                console.error('CKEditor instance is not available.');
+                return false;
+            }
+
+            // Get CKEditor content
+            var ckeditorContent = editorInstance.getData();
+
+            // Create a new FormData object with the correct form ID
+            var formElement = document.querySelector('#myForm');
+
+            if (!formElement) {
+                console.error('Form element not found.');
+                return false;
+            }
+
+            var formData = new FormData(formElement);
+
+            // Append CKEditor content to FormData
+            formData.append('details', ckeditorContent);
+
+            var url = "{{ url('ProInfo') }}";
+
             $.ajax({
                 url: url,
                 type: "POST",
-                data: new FormData($("#addFrom form")[0]),
+                data: formData,
                 contentType: false,
                 processData: false,
                 success: function (data) {
                     var dataResult = JSON.parse(data);
                     if (dataResult.statusCode == 200) {
                         swal("Success", dataResult.statusMsg);
-                        $('#addFrom form')[0].reset();
-                    }else if (dataResult.statusCode == 204) {
+                        formElement.reset();
+                    } else if (dataResult.statusCode == 204) {
                         showErrors(dataResult.errors);
-                    }else{
+                    } else {
                         swal({
                             title: "Oops",
                             text: dataResult.statusMsg,
                             icon: "error",
                             timer: '1500'
                         });
-
                     }
-                }, error: function (data) {
+                },
+                error: function (data) {
                     console.log(data);
                     swal({
                         title: "Oops",
-                        text: "Error occured",
+                        text: "Error occurred",
                         icon: "error",
                         timer: '1500'
                     });
                 }
             });
-            return false;
-        };
 
+            return false;
+        }
+        
         function showData(id) {
             $.ajax({
                 url: "{{ url('Division') }}" + '/' + id,
@@ -224,7 +268,7 @@
             });
         }
 
-        function  deleteData(id) {
+        function deleteData(id) {
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
             swal({
                 title: "Are you sure?",
@@ -269,16 +313,11 @@
                 });
         }
 
-    </script>
-    <script>
         function preview(id) {
             const fileInput = document.getElementById(`image${id}`);
             const previewImage = document.getElementById(`logoPreview${id}`);
-
             if (fileInput.files && fileInput.files[0]) {
-                // Create a URL for the selected file
                 const fileURL = URL.createObjectURL(fileInput.files[0]);
-                // Set the URL as the source of the preview image
                 previewImage.src = fileURL;
             }
         }

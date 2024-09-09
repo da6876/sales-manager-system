@@ -327,7 +327,6 @@
             type: "GET",
             dataType: "JSON",
             success: function (data) {
-                console.log(data);
                 if (data.statusCode && data.statusCode === 200) {
                     var brandInfo = data.data;
                     $('#brandName').text(brandInfo.name).removeClass('d-none');

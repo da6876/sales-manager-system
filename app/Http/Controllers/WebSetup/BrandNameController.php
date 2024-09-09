@@ -13,6 +13,13 @@ use Illuminate\Support\Str;
 
 class BrandNameController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:create_brand', ['only' => ['create']]);
+        $this->middleware('permission:view_brand', ['only' => ['index']]);
+        $this->middleware('permission:update_brand', ['only' => ['edit']]);
+        $this->middleware('permission:delete_brand', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();

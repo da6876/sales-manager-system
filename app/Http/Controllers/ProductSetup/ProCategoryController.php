@@ -15,6 +15,13 @@ use Illuminate\Support\Str;
 class ProCategoryController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:create_pro_category', ['only' => ['create']]);
+        $this->middleware('permission:view_pro_category', ['only' => ['index']]);
+        $this->middleware('permission:update_pro_category', ['only' => ['edit']]);
+        $this->middleware('permission:delete_pro_category', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();

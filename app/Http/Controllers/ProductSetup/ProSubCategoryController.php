@@ -14,13 +14,18 @@ use Illuminate\Support\Str;
 
 class ProSubCategoryController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('permission:create_pro_sub_category', ['only' => ['create']]);
+        $this->middleware('permission:view_pro_sub_category', ['only' => ['index']]);
+        $this->middleware('permission:update_pro_sub_category', ['only' => ['edit']]);
+        $this->middleware('permission:delete_pro_sub_category', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();
         return view('ProductSetup.subcategory.show');
     }
-
     public function create()
     {
         $this->checkLogin();
@@ -28,7 +33,6 @@ class ProSubCategoryController extends Controller
         $Category = ProCategory::where('status', 'A')->get();
         return view('ProductSetup.subcategory.create', [ 'Category' => $Category]);
     }
-
     public function edit($id)
     {
         $this->checkLogin();
@@ -36,7 +40,6 @@ class ProSubCategoryController extends Controller
         $Category = ProCategory::where('status', 'A')->get();
         return view('ProductSetup.subcategory.edit', [ 'navItem' => $navItem,'Category' => $Category,]);
     }
-
     public function store(Request $request)
     {
         try {
@@ -116,7 +119,6 @@ class ProSubCategoryController extends Controller
             ]);
         }
     }
-
     public function destroy($id){
         try {
             $permission = ProSubCategory::where('uid', $id)->first();
@@ -137,7 +139,6 @@ class ProSubCategoryController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
         $query = DB::table('sms_prosubcategory as p')
@@ -164,4 +165,5 @@ class ProSubCategoryController extends Controller
             'data' => $data,
         ]);
     }
+
 }

@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('alert', [\App\Http\Controllers\DashboardController::class, 'alert'])->name('alert');
 Route::get('button', [\App\Http\Controllers\DashboardController::class, 'button'])->name('button');
@@ -23,17 +13,16 @@ Route::get('chart1', [\App\Http\Controllers\DashboardController::class, 'form'])
 Route::get('chart2', [\App\Http\Controllers\DashboardController::class, 'form'])->name('chart2');
 
 Route::get('test', [\App\Http\Controllers\DashboardController::class, 'test'])->name('test');
-Route::get('test', [\App\Http\Controllers\DashboardController::class, 'test'])->name('test');
 
 
 Route::middleware(['xss.protection'])->group(function () {
-    Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
-    Route::get('Dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('welcome');
     Route::get('login', [\App\Http\Controllers\UserConfig\UsersController::class, 'LoginFrom'])->name('login');
     Route::post('requestLogin',[\App\Http\Controllers\UserConfig\UsersController::class,'authenticate']);
     Route::get('getBrandInfo', [App\Http\Controllers\WebSetup\BrandNameController::class, 'getBrandInfo']);
 
     Route::group(['middleware' => 'auth'], function () {
+        Route::get('Dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('welcome');
+        Route::get('/', [\App\Http\Controllers\DashboardController::class, 'index'])->name('Dashboard');
         Route::post('/logout',[\App\Http\Controllers\UserConfig\UsersController::class,'logout'])->name('logout');
 
         Route::resource('SidebarNav', App\Http\Controllers\WebSetup\SidebarNavController::class);

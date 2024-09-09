@@ -12,7 +12,13 @@ use Illuminate\Support\Str;
 
 class ProBrandController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('permission:create_pro_brand', ['only' => ['create']]);
+        $this->middleware('permission:view_pro_brand', ['only' => ['index']]);
+        $this->middleware('permission:update_pro_brand', ['only' => ['edit']]);
+        $this->middleware('permission:delete_pro_brand', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();

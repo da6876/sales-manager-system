@@ -17,13 +17,13 @@ use Yajra\DataTables\DataTables;
 
 class UsersController extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
-        $this->middleware('permission:create_sidebarnav', ['only' => ['create']]);
-        $this->middleware('permission:view_sidebarnav', ['only' => ['index']]);
-        $this->middleware('permission:update_sidebarnav', ['only' => ['edit']]);
-        $this->middleware('permission:delete_sidebarnav', ['only' => ['destroy']]);
-    }*/
+        $this->middleware('permission:create_user', ['only' => ['create']]);
+        $this->middleware('permission:view_user', ['only' => ['index']]);
+        $this->middleware('permission:update_user', ['only' => ['edit']]);
+        $this->middleware('permission:delete_user', ['only' => ['destroy']]);
+    }
     public function LoginFrom()
     {
         return view('auth.login');
@@ -34,20 +34,17 @@ class UsersController extends Controller
         $this->checkLogin();
         return view('UserConfig.user.showUser');
     }
-
     public function create()
     {
         $this->checkLogin();
         return view('UserConfig.user.createUser');
     }
-
     public function edit($id)
     {
         $this->checkLogin();
         $rowItem = User::where('uid', $id)->first();
         return view('UserConfig.user.editUser', ['rowItem' => $rowItem]);
     }
-
     public function store(Request $request){
         try {
             if ($request['id']==""){
@@ -57,6 +54,7 @@ class UsersController extends Controller
                     'branch_id' => 'required',
                     'phone' => 'required',
                     'roles' => 'required',
+                    'status' => 'required',
                     'password' => 'required',
                 ]);
 
@@ -86,6 +84,7 @@ class UsersController extends Controller
                     'branch_id' => 'required',
                     'phone' => 'required',
                     'roles' => 'required',
+                    'status' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -99,6 +98,7 @@ class UsersController extends Controller
                     'branch_id'=>$request->branch_id,
                     'email'=>$request->email,
                     'phone'=>$request->phone,
+                    'status'=>$request->status,
                     'password'=>Hash::make($request->password)
                 ]);
                 $permission->syncRoles($request->roles);
@@ -116,7 +116,6 @@ class UsersController extends Controller
             ));;
         }
     }
-
     public function show($id){
         try {
             $singleDataShow = DB::table('users')->where('id', $id)->get();
@@ -130,7 +129,6 @@ class UsersController extends Controller
             ));;
         }
     }
-
     public function destroy($id){
         try {
             $permission = User::where('uid', $id)->first();
@@ -145,10 +143,10 @@ class UsersController extends Controller
             ));
         }
     }
-
     public function GetRoles(){
         try {
             $singleDataShow = Role::all();
+            $singleDataShow = Role::where('name', '!=', 'Root')->get();
             return $singleDataShow;
         } catch (\Exception $e) {
 
@@ -169,10 +167,8 @@ class UsersController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
-        // Build the query to join users and roles
         $query = DB::table('users')
             ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
             ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
@@ -187,7 +183,6 @@ class UsersController extends Controller
             )
             ->where('model_has_roles.model_type', '=', 'App\\Models\\User'); // Ensure the model type matches
 
-        // Apply search filter
         if ($request->has('search') && isset($request->search['value'])) {
             $search = $request->search['value'];
             $query->where(function($query) use ($search) {
@@ -352,7 +347,6 @@ class UsersController extends Controller
             ));
         }
     }
-
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();

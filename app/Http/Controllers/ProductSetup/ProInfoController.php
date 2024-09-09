@@ -16,6 +16,13 @@ use Illuminate\Support\Str;
 class ProInfoController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('permission:create_pro_info', ['only' => ['create']]);
+        $this->middleware('permission:view_pro_info', ['only' => ['index']]);
+        $this->middleware('permission:update_pro_info', ['only' => ['edit']]);
+        $this->middleware('permission:delete_pro_info', ['only' => ['destroy']]);
+    }
     public function index()
     {
         $this->checkLogin();
