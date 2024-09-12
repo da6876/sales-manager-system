@@ -23,10 +23,10 @@
                     <div class="card-body" id="addFrom">
                         <div class="row">
                             <div class="col-md-10">
-                                <h5 class="card-title">Add Brand Name</h5>
+                                <h5 class="card-title">Add Pro. Category</h5>
                             </div>
                             <div class="col-md-2 mt-3 ">
-                                <a href="{{route('BrandName.index')}}" type="button" class="btn btn-outline-info btn-sm text-right"> Back <i class="bi bi-arrow-left-short"></i></a>
+                                <a href="{{route('ProCategory.index')}}" type="button" class="btn btn-outline-info btn-sm text-right"> Back <i class="bi bi-arrow-left-short"></i></a>
                             </div>
                         </div>
 
@@ -36,19 +36,6 @@
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name">
                                 <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="details" class="form-label">Details</label>
-                                <input type="text" class="form-control" id="details" name="details">
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="logo" class="form-label">Logo</label>
-                                <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-6">
-                                <img id="logoPreview" src="" alt="Image Preview" style="display:none; max-width: 20%; height: auto;"/>
                             </div>
                             <div class="col-md-6">
                                 <label for="status" class="form-label">Status</label>
@@ -77,7 +64,7 @@
 @section('script')
     <script>
         function addData() {
-            url = "{{ url('BrandName') }}";
+            url = "{{ url('ProCategory') }}";
             $.ajax({
                 url: url,
                 type: "POST",
@@ -112,106 +99,6 @@
             });
             return false;
         };
-
-        function showData(id) {
-            $.ajax({
-                url: "{{ url('Division') }}" + '/' + id,
-                type: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    $('#addModal form')[0].reset();
-                    $('.role-title').text('Update Division');
-                    $('#addModal').modal('show');
-                    $('#id').val(data.id);
-                    $('#name').val(data.name);
-                    $('#status').val(data.status);
-                }, error: function () {
-                    swal({
-                        title: "Oops",
-                        text: "Error Occured",
-                        icon: "error",
-                        timer: '1500'
-                    });
-                }
-            });
-        }
-
-        function  deleteData(id) {
-            var csrf_token = $('meta[name="csrf-token"]').attr('content');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            url: "{{ url('Division') }}" + '/' + id,
-                            type: "POST",
-                            data: {'_method': 'DELETE', '_token': csrf_token},
-                            success: function (data) {
-                                console.log(data);
-                                var dataResult = JSON.parse(data);
-                                if (dataResult.statusCode == 200) {
-                                    $('#dataTableItem').DataTable().ajax.reload();
-                                    swal({
-                                        title: "Delete Done",
-                                        text: "Poof! Your data file has been deleted!",
-                                        icon: "success",
-                                        button: "Done"
-                                    });
-                                } else {
-                                    swal("Error occured !!");
-                                }
-                            }, error: function (data) {
-                                console.log(data);
-                                swal({
-                                    title: "Opps...",
-                                    text: "Error occured !",
-                                    icon: "error",
-                                    button: 'Ok ',
-                                });
-                            }
-                        });
-                    } else {
-                        swal("Your imaginary file is safe!");
-                    }
-                });
-        }
-
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get references to the file input and image preview elements
-            var logoInput = document.getElementById('logo');
-            var logoPreview = document.getElementById('logoPreview');
 
-            // Listen for changes to the file input
-            logoInput.addEventListener('change', function(event) {
-                // Get the selected file
-                var file = event.target.files[0];
-
-                // If a file was selected
-                if (file) {
-                    // Create a FileReader to read the file
-                    var reader = new FileReader();
-
-                    // Define what happens when the FileReader loads the file
-                    reader.onload = function(e) {
-                        // Set the src attribute of the image preview to the file's data URL
-                        logoPreview.src = e.target.result;
-                        logoPreview.style.display = 'block'; // Show the image
-                    };
-
-                    // Read the file as a data URL
-                    reader.readAsDataURL(file);
-                } else {
-                    // Hide the image preview if no file is selected
-                    logoPreview.style.display = 'none';
-                }
-            });
-        });
-    </script>
 @endsection

@@ -25,23 +25,20 @@ class ProCategoryController extends Controller
     public function index()
     {
         $this->checkLogin();
-        return view('ProductSetup.subcategory.show');
+        return view('ProductSetup.category.show');
     }
-
     public function create()
     {
         $this->checkLogin();
-        return view('ProductSetup.subcategory.create');
+        return view('ProductSetup.category.create');
     }
-
     public function edit($id)
     {
         $this->checkLogin();
         $navItem = ProCategory::where('uid', $id)->first();
 
-        return view('ProductSetup.subcategory.edit', [ 'navItem' => $navItem]);
+        return view('ProductSetup.category.edit', [ 'navItem' => $navItem]);
     }
-
     public function store(Request $request)
     {
         try {
@@ -117,7 +114,6 @@ class ProCategoryController extends Controller
             ]);
         }
     }
-
     public function destroy($id){
         try {
             $permission = ProCategory::where('uid', $id)->first();
@@ -138,7 +134,6 @@ class ProCategoryController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
         $query = DB::table('sms_procategory as p')

@@ -1,17 +1,19 @@
 @extends('layout.appmain')
-@section('title', '- Pro. Info')
+@section('title', '- Sidebar Nav')
+@section('style')
 
+@endsection
 @section('main')
 
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Pro. Info</h1>
+            <h1>Branch Info</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                    <li class="breadcrumb-item">Product Setup</li>
-                    <li class="breadcrumb-item active">Pro. Info</li>
+                    <li class="breadcrumb-item">User Config</li>
+                    <li class="breadcrumb-item active">Branch Info</li>
                 </ol>
             </nav>
         </div>
@@ -23,25 +25,28 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10">
-                                <h5 class="card-title">Pro. Info</h5>
+                                <h5 class="card-title">Branch Info</h5>
                             </div>
                             <div class="col-md-2 mt-3 ">
-                                <a href="{{route('ProInfo.create')}}" type="button"
-                                   class="btn btn-outline-success btn-sm text-right"> Add New <i class="bi bi-plus"></i></a>
+                                <a href="{{route('BranchInfo.create')}}" type="button" class="btn btn-outline-success btn-sm text-right"> Add New <i class="bi bi-plus"></i></a>
                             </div>
                         </div>
                         <form action="#" id="fromData" style="display: none">@csrf</form>
-                        <table class="table table-hover table-sm" id="dataTableItem">
+                        <table class="table table-hover table-responsive table-sm" id="dataTableItem">
                             <thead>
                             <tr>
-                                <th scope="col">Image</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Address</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                         </table>
+                        <!-- End Table with hoverable rows -->
+
                     </div>
                 </div>
             </div>
@@ -53,7 +58,7 @@
 @section('script')
     <script>
         var TableData;
-        var url = "{{ route('all.ProInfo') }}";
+        var url = "{{ route('all.BranchInfo') }}";
 
         function LoadDataTable() {
             TableData = $('#dataTableItem').DataTable({
@@ -66,23 +71,19 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    data: function (d) {
+                    data: function(d) {
                         d.form_data = $("#fromData").serialize(); // Send form data as POST data
                     }
                 },
                 columns: [
-                    {
-                        data: 'image1',
-                        render: function (data, type, row) {
-                            return data ? `<img src="${data}" width="20%" />` : 'No Image'; // Handle empty data
-                        }
-                    },
-                    {data: 'id'},
-                    {data: 'title'},
-
+                    { data: 'id' },
+                    { data: 'name' },
+                    { data: 'phone' },
+                    { data: 'email' },
+                    { data: 'address' },
                     {
                         data: 'status',
-                        render: function (data, type, row) {
+                        render: function(data, type, row) {
                             let badgeClass = '';
                             let badgeText = '';
                             switch (data) {
@@ -106,15 +107,14 @@
                         data: null,
                         orderable: false,
                         defaultContent: "NO Data",
-                        render: function (data, type, row) {
-                            return `
-                    <button type="button" class="btn btn-outline-info btn-sm edit-button" data-id="${row.uid}"><i class="bi bi-pencil-fill"></i></button>
-                    <button type="button" class="btn btn-outline-danger btn-sm delete-button" data-id="${row.uid}"><i class="bi bi-x-circle-fill"></i></button>
-                `;
+                        render: function(data, type, row) {
+                            return `<button type="button" class="btn btn-outline-info btn-sm edit-button" data-id="${row.uid}"><i class="bi bi-pencil-fill"></i></button>
+                            <button type="button" class="btn btn-outline-danger btn-sm delete-button" data-id="${row.uid}"><i class="bi bi-x-circle-fill"></i></button>`;
                         }
                     }
                 ],
-                rowCallback: function (row, data) {
+                // Expandable rows
+                rowCallback: function(row, data) {
                     if (data.parent_id) {
                         $(row).addClass('child-row');
                     }
@@ -122,28 +122,28 @@
             });
 
             // Event delegation to handle click events
-            $('#dataTableItem').on('click', '.edit-button', function () {
+            $('#dataTableItem').on('click', '.edit-button', function() {
                 var id = $(this).data('id');
                 showData(id);
             });
 
-            $('#dataTableItem').on('click', '.delete-button', function () {
+            $('#dataTableItem').on('click', '.delete-button', function() {
                 var id = $(this).data('id');
                 deleteData(id);
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             LoadDataTable();
         });
 
         function showData(id) {
-            var url = "{{ route('ProInfo.edit', ':id') }}"; // Use named route with placeholder
+            var url = "{{ route('BranchInfo.edit', ':id') }}"; // Use named route with placeholder
             var fullUrl = url.replace(':id', id); // Replace placeholder with actual ID
             window.location.href = fullUrl; // Redirect to the constructed URL
         }
 
-        function deleteData(id) {
+        function  deleteData(id) {
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
             swal({
                 title: "Are you sure?",
@@ -155,7 +155,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
-                            url: "{{ url('ProInfo') }}" + '/' + id,
+                            url: "{{ url('BranchInfo') }}" + '/' + id,
                             type: "POST",
                             data: {'_method': 'DELETE', '_token': csrf_token},
                             success: function (data) {

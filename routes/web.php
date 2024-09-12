@@ -11,14 +11,15 @@ Route::get('table1', [\App\Http\Controllers\DashboardController::class, 'form'])
 Route::get('table2', [\App\Http\Controllers\DashboardController::class, 'form'])->name('table2');
 Route::get('chart1', [\App\Http\Controllers\DashboardController::class, 'form'])->name('chart1');
 Route::get('chart2', [\App\Http\Controllers\DashboardController::class, 'form'])->name('chart2');
-
 Route::get('test', [\App\Http\Controllers\DashboardController::class, 'test'])->name('test');
 
 
+Route::post('/orders', [App\Http\Controllers\SellInfo\OrderController::class, 'store']);
 Route::middleware(['xss.protection'])->group(function () {
     Route::get('login', [\App\Http\Controllers\UserConfig\UsersController::class, 'LoginFrom'])->name('login');
     Route::post('requestLogin',[\App\Http\Controllers\UserConfig\UsersController::class,'authenticate']);
     Route::get('getBrandInfo', [App\Http\Controllers\WebSetup\BrandNameController::class, 'getBrandInfo']);
+    Route::get('WebSettings', [App\Http\Controllers\DashboardController::class, 'WebSettings'])->name('WebSettings');
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('Dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->name('welcome');
@@ -50,6 +51,7 @@ Route::middleware(['xss.protection'])->group(function () {
 
         Route::resource('ProInfo', App\Http\Controllers\ProductSetup\ProInfoController::class);
         Route::post('/get/all/ProInfo', [App\Http\Controllers\ProductSetup\ProInfoController::class, 'getData'])->name('all.ProInfo');
+        Route::post('getProductList', [App\Http\Controllers\ProductSetup\ProInfoController::class, 'getProductList'])->name('all.ProductList');
 
         Route::resource('ProCategory', App\Http\Controllers\ProductSetup\ProCategoryController::class);
         Route::post('/get/all/ProCategory', [App\Http\Controllers\ProductSetup\ProCategoryController::class, 'getData'])->name('all.ProCategory');
@@ -62,6 +64,13 @@ Route::middleware(['xss.protection'])->group(function () {
 
         Route::resource('ProType', App\Http\Controllers\ProductSetup\ProTypeController::class);
         Route::post('/get/all/ProType', [App\Http\Controllers\ProductSetup\ProTypeController::class, 'getData'])->name('all.ProType');
+
+        Route::resource('SellInfo', App\Http\Controllers\SellInfo\SellInfoController::class);
+        Route::post('/get/all/SellInfo', [App\Http\Controllers\SellInfo\SellInfoController::class, 'getData'])->name('all.SellInfo');
+        Route::get('POS', [App\Http\Controllers\SellInfo\SellInfoController::class, 'POS'])->name('POS');
+
+        Route::get('print-invoice/{order_number}', [App\Http\Controllers\SellInfo\SellInfoController::class, 'printInvoice'])->name('print.invoice');
+
 
     });
 

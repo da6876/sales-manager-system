@@ -6,12 +6,12 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Brand Name</h1>
+            <h1>Pro. Category</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
                     <li class="breadcrumb-item">Product Setup</li>
-                    <li class="breadcrumb-item active">Brand Name</li>
+                    <li class="breadcrumb-item active">Pro. Category</li>
                 </ol>
             </nav>
         </div>
@@ -23,10 +23,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10">
-                                <h5 class="card-title">Brand Name</h5>
+                                <h5 class="card-title">Pro. Category</h5>
                             </div>
                             <div class="col-md-2 mt-3 ">
-                                <a href="{{route('BrandName.create')}}" type="button" class="btn btn-outline-success btn-sm text-right"> Add New <i class="bi bi-plus"></i></a>
+                                <a href="{{route('ProCategory.create')}}" type="button" class="btn btn-outline-success btn-sm text-right"> Add New <i class="bi bi-plus"></i></a>
                             </div>
                         </div>
                         <form action="#" id="fromData" style="display: none">@csrf</form>
@@ -35,7 +35,6 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Logo</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -54,7 +53,7 @@
 @section('script')
     <script>
         var TableData;
-        var url = "{{ route('all.BrandName') }}";
+        var url = "{{ route('all.ProCategory') }}";
 
         function LoadDataTable() {
             TableData = $('#dataTableItem').DataTable({
@@ -74,9 +73,6 @@
                 columns: [
                     { data: 'id' },
                     {data: 'name',},
-                    { data: 'logo', render: function(data, type, row) {
-                            return `<img  height="100px" alt="" src="${data}"/>`;
-                        }},
                     {
                         data: 'status',
                         render: function(data, type, row) {
@@ -133,7 +129,7 @@
         });
 
         function showData(id) {
-            var url = "{{ route('BrandName.edit', ':id') }}"; // Use named route with placeholder
+            var url = "{{ route('ProCategory.edit', ':id') }}"; // Use named route with placeholder
             var fullUrl = url.replace(':id', id); // Replace placeholder with actual ID
             window.location.href = fullUrl; // Redirect to the constructed URL
         }
@@ -150,7 +146,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
-                            url: "{{ url('BrandName') }}" + '/' + id,
+                            url: "{{ url('ProCategory') }}" + '/' + id,
                             type: "POST",
                             data: {'_method': 'DELETE', '_token': csrf_token},
                             success: function (data) {

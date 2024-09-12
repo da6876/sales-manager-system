@@ -17,13 +17,7 @@ class DashboardController extends Controller
         $this->middleware('permission:update_dashboard', ['only' => ['edit']]);
         $this->middleware('permission:delete_dashboard', ['only' => ['destroy']]);
     }
-    public function test(){
-
-        return $navItems = SidebarNav::whereNull('parent_id')
-            ->where('status', 'A')
-            ->with('children')
-            ->orderBy('order')
-            ->get();
+    public function WebSettings(){
         return view('datatable');
     }
 

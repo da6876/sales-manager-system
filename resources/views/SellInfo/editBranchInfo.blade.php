@@ -1,17 +1,17 @@
 @extends('layout.appmain')
-@section('title', '- Edit Brand Name')
+@section('title', '- Edit Sidebar Nav')
 
 @section('main')
 
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Edit Brand Name</h1>
+            <h1>Edit Branch Info</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                    <li class="breadcrumb-item">Product Setup</li>
-                    <li class="breadcrumb-item active">Edit Brand Name</li>
+                    <li class="breadcrumb-item">User Config</li>
+                    <li class="breadcrumb-item active">Edit  Side Menu</li>
                 </ol>
             </nav>
         </div>
@@ -23,20 +23,38 @@
                     <div class="card-body" id="addFrom">
                         <div class="row">
                             <div class="col-md-10">
-                                <h5 class="card-title">Edit Brand Name</h5>
+                                <h5 class="card-title">Edit Branch Info</h5>
                             </div>
                             <div class="col-md-2 mt-3 ">
-                                <a href="{{url('ProCategory')}}" type="button" class="btn btn-outline-info btn-sm text-right"> Back <i class="bi bi-arrow-left-short"></i></a>
+                                <a href="{{url('BranchInfo')}}" type="button" class="btn btn-outline-info btn-sm text-right"> Back <i class="bi bi-arrow-left-short"></i></a>
                             </div>
                         </div>
                         <!-- Multi Columns Form -->
                         <form class="row g-3">
                             @csrf
-                            <input type="hidden" id="id" name="id" value="{{ $navItem->id }}"> <!-- Hidden ID field -->
+                            <input type="hidden" id="id" name="id" value="{{ $rowItem->id }}"> <!-- Hidden ID field -->
 
                             <div class="col-md-6">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $navItem->name) }}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $rowItem->name) }}">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $rowItem->email) }}">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ old('address', $rowItem->address) }}">
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="number" class="form-control" id="phone" name="phone" value="{{ old('phone', $rowItem->phone) }}">
                                 <div class="invalid-feedback"></div>
                             </div>
 
@@ -44,8 +62,8 @@
                                 <label for="status" class="form-label">Status</label>
                                 <select id="status" class="form-select" name="status">
                                     <option value="">Select Status</option>
-                                    <option value="A" {{ old('status', $navItem->status) == 'A' ? 'selected' : '' }}>Active</option>
-                                    <option value="I" {{ old('status', $navItem->status) == 'I' ? 'selected' : '' }}>InActive</option>
+                                    <option value="A" {{ old('status', $rowItem->status) == 'A' ? 'selected' : '' }}>Active</option>
+                                    <option value="I" {{ old('status', $rowItem->status) == 'I' ? 'selected' : '' }}>InActive</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
@@ -70,7 +88,7 @@
 
     function updateData() {
 
-        url = "{{ url('ProCategory') }}";
+        url = "{{ url('BranchInfo') }}";
         $.ajax({
             url: url,
             type: "POST",
@@ -81,7 +99,7 @@
                 var dataResult = JSON.parse(data);
                 if (dataResult.statusCode == 200) {
                     swal("Success", dataResult.statusMsg).then((result) => {
-                            window.location.href = "{{ url('ProCategory') }}"; // Redirect to a different page
+                            window.location.href = "{{ url('BranchInfo') }}"; // Redirect to a different page
                     });
                 } else if (dataResult.statusCode == 204) {
                     showErrors(dataResult.errors);

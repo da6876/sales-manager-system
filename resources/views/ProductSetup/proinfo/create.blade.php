@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="details" class="form-label">Details</label>
-                                <textarea id="details" name="details" class="form-control"></textarea>
+                                <textarea id="details" name="details" class="form-control" rows="10"></textarea>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="col-md-3">
@@ -185,30 +185,19 @@
             });
 
         function addData() {
-            // Check if editorInstance is defined and has a valid instance
             if (!editorInstance) {
                 console.error('CKEditor instance is not available.');
                 return false;
             }
-
-            // Get CKEditor content
             var ckeditorContent = editorInstance.getData();
-
-            // Create a new FormData object with the correct form ID
             var formElement = document.querySelector('#myForm');
-
             if (!formElement) {
                 console.error('Form element not found.');
                 return false;
             }
-
             var formData = new FormData(formElement);
-
-            // Append CKEditor content to FormData
             formData.append('details', ckeditorContent);
-
             var url = "{{ url('ProInfo') }}";
-
             $.ajax({
                 url: url,
                 type: "POST",
@@ -219,7 +208,7 @@
                     var dataResult = JSON.parse(data);
                     if (dataResult.statusCode == 200) {
                         swal("Success", dataResult.statusMsg);
-                        formElement.reset();
+                       // formElement.reset();
                     } else if (dataResult.statusCode == 204) {
                         showErrors(dataResult.errors);
                     } else {
@@ -244,7 +233,7 @@
 
             return false;
         }
-        
+
         function showData(id) {
             $.ajax({
                 url: "{{ url('Division') }}" + '/' + id,
@@ -266,51 +255,6 @@
                     });
                 }
             });
-        }
-
-        function deleteData(id) {
-            var csrf_token = $('meta[name="csrf-token"]').attr('content');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            url: "{{ url('Division') }}" + '/' + id,
-                            type: "POST",
-                            data: {'_method': 'DELETE', '_token': csrf_token},
-                            success: function (data) {
-                                console.log(data);
-                                var dataResult = JSON.parse(data);
-                                if (dataResult.statusCode == 200) {
-                                    $('#dataTableItem').DataTable().ajax.reload();
-                                    swal({
-                                        title: "Delete Done",
-                                        text: "Poof! Your data file has been deleted!",
-                                        icon: "success",
-                                        button: "Done"
-                                    });
-                                } else {
-                                    swal("Error occured !!");
-                                }
-                            }, error: function (data) {
-                                console.log(data);
-                                swal({
-                                    title: "Opps...",
-                                    text: "Error occured !",
-                                    icon: "error",
-                                    button: 'Ok ',
-                                });
-                            }
-                        });
-                    } else {
-                        swal("Your imaginary file is safe!");
-                    }
-                });
         }
 
         function preview(id) {

@@ -317,8 +317,29 @@ class ProInfoController extends Controller
         ]);
     }
 
-    public function uploadImage(Request $request)
+    public function getProductList(Request $request)
     {
+        $query = DB::table('sms_proinfo as p')
+            ->select('p.id', 'p.uid', 'p.title', 'p.image1', 'p.status')
+            ->where('p.status', '=', 'A')
+            ->where('p.status', '!=', 'Deleted');
 
+        if ($request->has('name')) {
+            $query->where('p.title', 'like', '%' . $request->input('name') . '%');
+        }
+
+        $totalCount = $query->count();
+
+        $data = $query->skip($request->input('start', 0))
+            ->take($request->input('length', 10))
+            ->get();
+
+        return response()->json([
+            'draw' => $request->draw,
+            'recordsTotal' => $totalCount,
+            'recordsFiltered' => $totalCount,
+            'data' => $data,
+            'datass' => $request->input('name'),
+        ]);
     }
 }
