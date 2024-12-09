@@ -43,10 +43,22 @@
             color: #fff !important;
             border: none !important;
         }
+
         .swal-button-print {
             background-color: #3085d6 !important; /* Custom color for "Print Order" */
             color: #fff !important;
             border: none !important;
+        }
+    </style>
+    <style>
+        .customer-item {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .customer-item:hover {
+            background-color: #ffe6aa; /* Optional: Adds a background color on hover */
         }
     </style>
 @endsection
@@ -86,21 +98,32 @@
                             </div>
                             <div class="col-lg-4">
                                 <h5 class="card-title">Order Details</h5>
-                                    <table class="table" id="OrderDetails">
-                                        <form class="row g-3">
-                                            @csrf
-
-                                            <div class="row" id="cardCustomer">
-                                                <input type="text" class="form-control" id="customerId" name="customerId"
-                                                       placeholder="Search Customer">
+                                <table class="table" id="OrderDetails">
+                                    <form class="row g-3">
+                                        @csrf
+                                        <div class="row" id="cardCustomer">
+                                            <div class="col-md-12">
+                                                <input type="hidden" class="form-control" id="customerId" name="customerId">
+                                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Search Or Enter Phone No">
+                                                <ul class="list-group"  id="customerList"></ul>
                                             </div>
+                                            <div class="col-md-12 mt-2">
+                                                <input type="text" class="form-control" id="address" name="address" placeholder="Customer Address">
+                                            </div>
+                                            <div class="col-md-6 mt-2">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Customer Name">
+                                            </div>
+                                            <div class="col-md-6 mt-2">
+                                                <input type="text" class="form-control" id="email" name="email" placeholder="Customer Email">
+                                            </div>
+                                        </div>
                                         <tbody>
 
                                         </tbody>
                                         <tfoot>
                                         </tfoot>
-                                        </form>
-                                    </table>
+                                    </form>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -108,6 +131,44 @@
             </div>
         </section>
 
+        <div class="modal fade" id="largeModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Customer</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3" id="myForm">@csrf
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="email" class="form-control" id="address" name="address">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" onclick="addData()" class="btn btn-primary">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <!-- End #main -->
 @endsection
@@ -116,6 +177,7 @@
         window.addEventListener('load', function () {
             document.body.classList.add('toggle-sidebar');
         });
+
         let orderItems = [];
         let discountAmount = 0;
         let receivedAmount = 0;
@@ -147,7 +209,7 @@
                             var imageUrl = item.image1 ? item.image1 : 'assets/img/card.jpg';
 
                             cardHtml += `
-                            <div class="card1 col-md-2 mb-5" style="height: 150px;">
+                            <div class="card1 col-md-2 mb-5" style="">
                                 <img src="${imageUrl}" class="card1-img-top" alt="${title}">
                                 <div class="card1-body">
                                     <span class="card1-title" style="font-size: small;">${title}</span>
@@ -170,13 +232,13 @@
             });
         }
 
-        function addItem(id,uid, title, imageUrl, price) {
+        function addItem(id, uid, title, imageUrl, price) {
             const existingItem = orderItems.find(item => item.uid === uid);
 
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                orderItems.push({id,uid, title, imageUrl, price, quantity: 1});
+                orderItems.push({id, uid, title, imageUrl, price, quantity: 1});
             }
 
             updateOrderDetails();
@@ -305,7 +367,7 @@
                     </li>
                     <li class="list-group-item">
                     <div class="row text-center">
-                        <div class="col-md-12"><button type="button" onclick="payNow()" class="btn btn-success btn-lg">${grandTotal.toFixed(2)} BDT Pay Now</button></div>
+                        <div class="col-md-12"><button type="button" onclick="checkNow()" class="btn btn-success btn-lg">${grandTotal.toFixed(2)} BDT Pay Now</button></div>
                     </div>
                 </li>
                 </ul>`
@@ -328,7 +390,16 @@
             return txt.value;
         }
 
+        function checkNow(){
+            if($('#customerId').val()==''){
+                addData();
+            }else {
+                payNow();
+            }
+        }
+
         function payNow() {
+
             const formData = new FormData();
 
             formData.append('customerId', $('#customerId').val());
@@ -395,6 +466,93 @@
             return false;
         }
 
+        function addData() {
+            const formData1 = new FormData();
+
+            formData1.append('phone', $('#phone').val());
+            formData1.append('name', $('#name').val());
+            formData1.append('email', $('#email').val());
+            formData1.append('address', $('#address').val());
+            url = "{{ url('customer') }}";
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            $.ajaxSetup({headers: {'X-CSRF-TOKEN': csrfToken}});
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: formData1,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 200) {
+                        $('#customerId').val(dataResult.id);
+                        payNow();
+                        //swal("Success", dataResult.statusMsg);
+                        //$('#largeModal form')[0].reset();
+                       // $('#largeModal').modal('hide')
+
+                    } else if (dataResult.statusCode == 204) {
+                        showErrors(dataResult.errors);
+                    } else {
+                        swal({
+                            title: "Oops",
+                            text: dataResult.statusMsg,
+                            icon: "error",
+                            timer: '1500'
+                        });
+
+                    }
+                }, error: function (data) {
+                    console.log(data);
+                    swal({
+                        title: "Oops",
+                        text: "Error occured",
+                        icon: "error",
+                        timer: '1500'
+                    });
+                }
+            });
+            return false;
+        };
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('#phone').on('input', function() {
+                var phone = $(this).val();
+                if (phone.length > 2) {
+                    $.ajax({
+                        url: "{{ url('search-customers') }}",
+                        type: 'GET',
+                        data: { phone: phone },
+                        success: function(data) {
+                            var customerList = '';
+                            data.forEach(function(customer) {
+                                customerList += `<li class="list-group-item customer-item" data-id="${customer.id}" data-name="${customer.name}" data-email="${customer.email}" data-phone="${customer.phone}" data-address="${customer.address}"><i class="bi bi-person-circle me-1 text-success"></i>${customer.name}</li>`;
+                            });
+                            $('#customerList').html(customerList);
+                        }
+                    });
+                } else {
+                    $('#customerList').html('');
+                }
+            });
+
+            $(document).on('click', '.customer-item', function() {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                var email = $(this).data('email');
+                var phone = $(this).data('phone');
+                var address = $(this).data('address');
+
+                $('#customerId').val(id);
+                $('#name').val(name);
+                $('#email').val(email);
+                $('#address').val(address);
+                $('#phone').val(phone);
+                $('#customerList').html('');
+            });
+        });
+    </script>
 @endsection

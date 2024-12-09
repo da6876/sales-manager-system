@@ -28,8 +28,9 @@ class OrderDtl extends Model
         return $this->belongsTo(Order::class);
     }
 
+
     public function product()
     {
-        return $this->belongsTo(ProInfo::class);
+        return $this->belongsTo(ProInfo::class, 'pro_id', 'id');
     }
 }

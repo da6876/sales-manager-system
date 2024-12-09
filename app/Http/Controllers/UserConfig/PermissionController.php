@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\UserConfig;
 
 use App\Http\Controllers\Controller;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -49,9 +50,10 @@ class PermissionController extends Controller
                     return json_encode(array('statusCode' => 204,'statusMsg' => 'Validation Error.', 'errors' => $validator->errors()));
                 }
 
-                Permission::create([
+                $rowData = Permission::create([
                     'name'=>$request->name
                 ]);
+                LogService::log(auth()->user()->id, 'Product Type', 'create', $rowData->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -77,6 +79,7 @@ class PermissionController extends Controller
                     "statusMsg" => "Data Update Successfully"
                 ));
             }
+            LogService::log(auth()->user()->id, 'Permission', 'update', $permission->getChanges());
 
         } catch (\Exception $e) {
 
@@ -108,6 +111,8 @@ class PermissionController extends Controller
             return json_encode(array(
                 "statusCode" => 200
             ));
+            LogService::log(auth()->user()->id, 'Permission', 'delete', $permission->getAttributes());
+
         } catch (\Exception $e) {
 
             return json_encode(array(

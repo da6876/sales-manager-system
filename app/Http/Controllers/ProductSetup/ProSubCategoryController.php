@@ -5,8 +5,9 @@ namespace App\Http\Controllers\ProductSetup;
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\ProCategory;
 use App\Models\ProductSetup\ProSubCategory;
-use App\Models\WebSetup\BrandName;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\BrandName;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -58,7 +59,7 @@ class ProSubCategoryController extends Controller
                     ));
                 }
 
-                ProSubCategory::create([
+                $rowData = ProSubCategory::create([
                     'name' => $request->name,
                     'cat_id' => $request->cat_id,
                     'uid' => Str::uuid(),
@@ -67,6 +68,7 @@ class ProSubCategoryController extends Controller
                     'create_date' => $this->getCurrentDateTime()
                 ]);
 
+                LogService::log(auth()->user()->id, 'Product Sub Category', 'create', $rowData->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -105,6 +107,7 @@ class ProSubCategoryController extends Controller
                     'update_by' => auth()->user()->id,
                     'update_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Product Sub Category', 'update', $navItem->getChanges());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -127,6 +130,7 @@ class ProSubCategoryController extends Controller
                 'update_by' => auth()->user()->id,
                 'update_date' => $this->getCurrentDateTime()
             ]);
+            LogService::log(auth()->user()->id, 'Product Sub Category', 'delete', $permission->getAttributes());
 
             return json_encode(array(
                 "statusCode" => 200

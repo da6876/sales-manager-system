@@ -48,6 +48,7 @@
                 </div>
             </div>
         </section>
+
         <div class="modal fade" id="addRolePermissionModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-simple modal-dialog-centered modal-add-new-role">
                 <div class="modal-content p-3 p-md-5">
@@ -75,6 +76,39 @@
                         </form>
                         <!--/ Add role form -->
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="addRoleMenuModal" class="modal fade"  tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-simple modal-dialog-centered modal-add-new-role">
+                <div class="modal-content p-3 p-md-5">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Menu Permission to Role</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="addIdmenu" name="role_id">
+                            <div class="mb-3">
+                                <label for="addName" class="form-label">Role Name</label>
+                                <input type="text" class="form-control" id="addNames" readonly>
+                            </div>
+                            <div class="col-12">
+                                <h5>Menu Permissions</h5>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="selectAll">
+                                    <label class="form-check-label" for="selectAll">Select All</label>
+                                </div>
+                                <div class="row" id="menus-list">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -112,7 +146,9 @@
                         orderable: false,
                         defaultContent: "NO Data",
                         render: function(data, type, row) {
-                            return `<button type="button" class="btn btn-outline-info btn-sm permission-button" data-id="${row.id}"><i class="bi bi-person-plus-fill"></i></button>
+                            return `
+                            <button type="button" class="btn btn-outline-info btn-sm menu-button" data-id="${row.id}" data-name="${row.name}" title="Menu Permission"><i class="bi bi-menu-button-wide-fill"></i></button>
+                            <button type="button" class="btn btn-outline-info btn-sm permission-button" data-id="${row.id}" title="Add Permission"><i class="bi bi-person-plus-fill"></i></button>
                             <button type="button" class="btn btn-outline-info btn-sm edit-button" data-id="${row.id}"><i class="bi bi-pencil-fill"></i></button>
                             <button type="button" class="btn btn-outline-danger btn-sm delete-button" data-id="${row.id}"><i class="bi bi-x-circle-fill"></i></button>`;
                         }
@@ -140,6 +176,12 @@
             $('#dataTableItem').on('click', '.permission-button', function() {
                 var id = $(this).data('id');
                 addPermissionToRole(id);
+            });
+
+            $('#dataTableItem').on('click', '.menu-button', function() {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                addMenuToRole(id,name);
             });
         }
 
@@ -193,6 +235,85 @@
                 }
             });
         }
+
+        function addMenuToRole(roleId, name) {
+            $.ajax({
+                url: 'addMenuPermision/' + roleId, // Adjust endpoint
+                method: 'GET',
+                success: function(data) {
+                    console.log(data);
+                    $('#addRoleMenuModal form')[0].reset();
+                    $('#addRoleMenuModal').modal('show');
+                    $('#menus-list').empty();
+                    $('#addIdmenu').val(roleId);
+                    $('#addNames').val(name);
+
+                    // Populate the menu list in a hierarchical structure
+                    $.each(data.menus, function(index, menu) {
+                        const parentItem = `
+                            <div class="form-check col-md-12 border-5">
+                                <input class="form-check-input" type="checkbox" name="permission[]" value="${menu.id}" ${menu.role_id ? 'checked' : ''}>
+                                <label class="form-check-label">${menu.name}</label>
+                            </div>
+                        `;
+                        $('#menus-list').append(parentItem);
+
+                        if (menu.children && menu.children.length > 0) {
+                            const childrenContainer = $('<div class="children row"></div>');
+                            $.each(menu.children, function(childIndex, child) {
+                                const childItem = `
+                                    <div class="form-check col-md-4">
+                                        <input class="form-check-input" type="checkbox" name="permission[]" value="${child.id}" ${child.role_id ? 'checked' : ''}>
+                                        <label class="form-check-label">${child.name}</label>
+                                    </div>
+                                `;
+                                childrenContainer.append(childItem);
+                            });
+                            $('#menus-list').append(childrenContainer);
+                        }
+                    });
+
+                    // Select All functionality
+                    $('#selectAll').prop('checked', false);
+
+                    $('#selectAll').on('change', function() {
+                        const isChecked = $(this).is(':checked');
+                        $('#menus-list input[type="checkbox"]').prop('checked', isChecked);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: " + status + error);
+                }
+            });
+        }
+
+        $('#addRoleMenuModal form').on('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const roleId = $('#addIdmenu').val(); // Get the role ID
+            const permissions = $('input[name="permission[]"]:checked').map(function() {
+                return $(this).val(); // Get the values of checked checkboxes
+            }).get();
+
+            // AJAX request to save permissions
+            $.ajax({
+                url: '/saveMenuPermissions', // Adjust endpoint to just the route
+                method: 'POST',
+                data: {
+                    roleId: roleId, // Pass the role ID in the data
+                    permissions: permissions,
+                    _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token for security
+                },
+                success: function(response) {
+                    alert('Permissions saved successfully!');
+                    $('#addRoleMenuModal').modal('hide'); // Hide the modal
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: " + status + error);
+                    alert('An error occurred while saving permissions.');
+                }
+            });
+        });
 
         function  deleteData(id) {
             var csrf_token = $('meta[name="csrf-token"]').attr('content');

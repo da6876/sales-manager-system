@@ -7,5 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = 'customers'; // Adjust if your table name is different
+    public $timestamps = false;
+    protected $table = 'sms_customers';
+    protected $fillable = [
+        'id',
+        'uid',
+        'name',
+        'phone',
+        'email',
+        'address',
+        'status',
+        'create_by',
+        'create_date',
+        'update_by',
+        'update_date',
+    ];
 }

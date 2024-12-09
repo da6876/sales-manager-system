@@ -4,7 +4,8 @@ namespace App\Http\Controllers\UserConfig;
 
 use App\Http\Controllers\Controller;
 use App\Models\UserConfig\BranchInfo;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -64,6 +65,7 @@ class BranchInfoController extends Controller
                     'create_by' => auth()->user()->id,
                     'create_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Branch Info', 'create', $data->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -102,6 +104,7 @@ class BranchInfoController extends Controller
                     'update_by' => auth()->user()->id,
                     'update_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Branch Info', 'update', $navItem->getChanges());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -124,6 +127,8 @@ class BranchInfoController extends Controller
             return json_encode(array(
                 "statusCode" => 200
             ));
+            LogService::log(auth()->user()->id, 'Branch Info', 'delete', $permission->getAttributes());
+
         } catch (\Exception $e) {
             return json_encode(array(
                 "statusCode" => 400,

@@ -43,7 +43,7 @@
                                 <input type="email" class="form-control" id="email" name="email">
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" name="address">
                                 <div class="invalid-feedback"></div>
@@ -51,6 +51,13 @@
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input type="number" class="form-control" id="phone" name="phone">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="status" class="form-label">User</label>
+                                <select id="user_id" class="form-select" name="user_id">
+                                    <option selected value="">Select User</option>
+                                </select>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="col-md-6">
@@ -129,6 +136,35 @@
                 inputElement.after(errorDiv);
             });
         }
+
+        $.ajax({
+            url: "{{ url('GetBranchFreeUser') }}",
+            type: "GET",
+            dataType: "JSON",
+            success: function (data) {
+                console.log(data);
+                if (data.statusCode && data.statusCode === 400) {
+                    swal({
+                        text: data.statusMsg || "Roles Not Found",
+                        timer: '1500'
+                    });
+                } else {
+                    var selectRoles = $('#user_id');
+                    selectRoles.empty();
+                    selectRoles.append('<option value="">Select a User</option>'); // Add default option
+                    data.forEach(function(role) {
+                        selectRoles.append('<option value="' + role.id + '">' + role.name + '</option>');
+                    });
+                }
+            },
+            error: function () {
+                // Handle AJAX request error
+                swal({
+                    text: "Error occurred while fetching roles",
+                    timer: '1500'
+                });
+            }
+        });
     </script>
 
 @endsection

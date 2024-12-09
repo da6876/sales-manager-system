@@ -5,7 +5,8 @@ namespace App\Http\Controllers\UserConfig;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserConfig\BranchInfo;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -51,10 +52,9 @@ class UsersController extends Controller
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
                     'email' => 'required',
-                    'branch_id' => 'required',
+                    'address' => 'required',
                     'phone' => 'required',
                     'roles' => 'required',
-                    'status' => 'required',
                     'password' => 'required',
                 ]);
 
@@ -64,13 +64,15 @@ class UsersController extends Controller
                 $user = User::create([
                     'uid' => Str::uuid(),
                     'name'=>$request->name,
-                    'branch_id'=>$request->branch_id,
+                    'address'=>$request->address,
                     'email'=>$request->email,
                     'phone'=>$request->phone,
                     'status'=>$request->status,
                     'password'=>Hash::make($request->password)
                 ]);
                 $user->syncRoles($request->roles);
+                LogService::log(auth()->user()->id, 'User', 'create', $user->getAttributes());
+
                 return json_encode(array(
                     "statusCode" => 200,
                     "statusMsg" => "Data Added Successfully"
@@ -80,11 +82,10 @@ class UsersController extends Controller
             else{
                 $validator = Validator::make($request->all(), [
                     'name' => 'required',
+                    'address' => 'required',
                     'email' => 'required',
-                    'branch_id' => 'required',
                     'phone' => 'required',
                     'roles' => 'required',
-                    'status' => 'required',
                 ]);
 
                 if ($validator->fails()) {
@@ -95,13 +96,15 @@ class UsersController extends Controller
                 $permission = User::findOrFail($id);
                 $permission->update([
                     'name'=>$request->name,
-                    'branch_id'=>$request->branch_id,
+                    'address'=>$request->address,
                     'email'=>$request->email,
                     'phone'=>$request->phone,
                     'status'=>$request->status,
                     'password'=>Hash::make($request->password)
                 ]);
                 $permission->syncRoles($request->roles);
+                LogService::log(auth()->user()->id, 'User', 'update', $permission->getChanges());
+
                 return json_encode(array(
                     "statusCode" => 200,
                     "statusMsg" => "Data Update Successfully"
@@ -136,6 +139,8 @@ class UsersController extends Controller
             return json_encode(array(
                 "statusCode" => 200
             ));
+            LogService::log(auth()->user()->id, 'User', 'delete', $permission->getAttributes());
+
         } catch (\Exception $e) {
             return json_encode(array(
                 "statusCode" => 400,
@@ -145,9 +150,29 @@ class UsersController extends Controller
     }
     public function GetRoles(){
         try {
-            $singleDataShow = Role::all();
             $singleDataShow = Role::where('name', '!=', 'Root')->get();
             return $singleDataShow;
+        } catch (\Exception $e) {
+
+            return json_encode(array(
+                "statusCode" => 400,
+                "statusMsg" => $e->getMessage()
+            ));;
+        }
+    }
+    public function GetBranchFreeUser(){
+        try {
+            $query = DB::table('users')
+                ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+                ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+                ->select('users.id', 'users.name', 'roles.name as role_name')
+                ->where(function ($query) {
+                    $query->where('roles.name', 'Branch Admin')
+                        ->orWhere('roles.name', 'Branch Manager');
+                })
+                ->whereNull('users.status')
+                ->get();
+            return $query;
         } catch (\Exception $e) {
 
             return json_encode(array(
@@ -176,7 +201,6 @@ class UsersController extends Controller
                 'users.id',
                 'users.name',
                 'users.uid',
-                'users.branch_id',
                 'users.phone',
                 'users.email',
                 'roles.name as role_name'
@@ -222,75 +246,11 @@ class UsersController extends Controller
                 'id' => $user->id,
                 'uid' => $user->uid,
                 'name' => $user->name,
-                'branch_id' => $user->branch_id,
                 'phone' => $user->phone,
                 'email' => $user->email,
                 'roles_html' => $roleBadges,
             ];
         })->values(); // Convert to array
-
-        return response()->json([
-            'draw' => intval($request->draw),
-            'recordsTotal' => $totalCount,
-            'recordsFiltered' => $filteredCount,
-            'data' => $formattedData,
-        ]);
-    }
-    public function getData1(Request $request)
-    {
-        $query = DB::table('users')
-            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
-            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
-            ->select(
-                'users.id',
-                'users.name',
-                'users.branch_id',
-                'users.phone',
-                'users.email',
-                'roles.name as role_name'
-            )
-            ->where('model_has_roles.model_type', '=', 'App\\Models\\User');
-
-        if ($request->has('search') && isset($request->search['value'])) {
-            $search = $request->search['value'];
-            $query->where(function($query) use ($search) {
-                $query->where('users.name', 'like', '%' . $search . '%')
-                    ->orWhere('users.email', 'like', '%' . $search . '%')
-                    ->orWhere('users.phone', 'like', '%' . $search . '%');
-            });
-        }
-
-        if ($request->has('order')) {
-            $orderColumnIndex = $request->order[0]['column'];
-            $orderDirection = $request->order[0]['dir'];
-            $orderColumn = $request->columns[$orderColumnIndex]['data'];
-
-            $query->orderBy($orderColumn, $orderDirection);
-        }
-
-        $totalCount = $query->count();
-        $filteredCount = $totalCount;
-
-        $data = $query->skip($request->input('start', 0))
-            ->take($request->input('length', 10))
-            ->get()
-            ->groupBy('id');
-
-        $formattedData = $data->map(function ($rolesByUser) {
-            $user = $rolesByUser->first();
-            $roleBadges = $rolesByUser->pluck('role_name')->map(function ($role) {
-                return '<span class="badge rounded-pill bg-label-info">' . $role . '</span>';
-            })->implode('</br>');
-
-            return [
-                'id' => $user->id,
-                'name' => $user->name,
-                'branch_id' => $user->branch_id,
-                'phone' => $user->phone,
-                'email' => $user->email,
-                'roles_html' => $roleBadges,
-            ];
-        });
 
         return response()->json([
             'draw' => intval($request->draw),
@@ -328,10 +288,11 @@ class UsersController extends Controller
                     $user->longitude = $request->input('longitude');
                     $user->save();
                 }
+                LogService::log(auth()->user()->id, 'User ', 'Login', $user->getAttributes());
 
                 return json_encode(array(
                     'statusCode' => 200,
-                    'route' => 'Dashboard',
+                    'route' => 'dashboard',
                 ));
             } else {
                 return json_encode(array(
@@ -348,9 +309,11 @@ class UsersController extends Controller
         }
     }
     public function logout(Request $request){
+        LogService::log(auth()->user()->id, 'User ', 'Logout', $request);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('login');
     }
 }

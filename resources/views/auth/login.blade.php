@@ -9,19 +9,12 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                        <div class="d-flex justify-content-center py-4">
-                            <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                <img src="" alt="" id="logoPreview">
-                                <span class="d-none d-lg-block" id="brandName"></span>
-                            </a>
-                        </div><!-- End Logo -->
-
-                        <div class="card mb-3">
-
-                            <div class="card-body UserLogin">
-
-                                <div class="pt-4 pb-2">
-                                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                        <div class="card mb-3" style="background-color: #ffe6aa;">
+                            <div class="card-body UserLogin text-center">
+                                <img class="text-center pt-1" src="" alt="Logo Loading ..." id="logoPreview1" width="130px" height="100px">
+                               <b> <h3 class="d-none d-lg-block" id="brandName"></h3></b>
+                                <div class="">
+                                    <h5 class="card-title text-center pb-0">Login to Your Account</h5>
                                     <p class="text-center small">Enter your username & password to login</p>
                                 </div>
 
@@ -29,42 +22,37 @@
                                     <input type="hidden" name="latitude" id="latitude">
                                     <input type="hidden" name="longitude" id="longitude">
                                     <div class="col-12">
-                                        <label for="yourUsername" class="form-label">Username</label>
                                         <div class="input-group has-validation">
                                             <span class="input-group-text" id="inputGroupPrepend">@</span>
                                             <input type="text" name="email" class="form-control" id="email"
-                                                   required>
+                                                  placeholder="Enter Username" required>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="password"
-                                               required>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" value="true"
-                                                   id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend">**</span>
+                                            <input type="password" name="password" class="form-control" id="password"
+                                                   placeholder="Enter Password" required>
+                                            <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
+
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100" type="button" onclick="loginNow()">Login</button>
                                     </div>
-                                    {{--<div class="col-12">
-                                        <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
-                                    </div>--}}
+
+                                    <div class="col-12">
+                                        <p class="small mb-0"><a href="{{url('reset-email')}}">Forget Password</a></p>
+                                    </div>
                                 </form>
+                                <hr>
+                                <div class="credits mt-1" style="font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif">
+                                    Designed by <a target="_blank" href="https://sourceofcapacity.com/">SOC</a>
+                                </div>
 
                             </div>
-                        </div>
-
-                        <div class="credits">
-                            Designed by <a target="_blank" href="https://sourceofcapacity.com/">SOC</a>
                         </div>
 
                     </div>

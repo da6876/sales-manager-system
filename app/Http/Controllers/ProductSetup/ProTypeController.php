@@ -5,8 +5,9 @@ namespace App\Http\Controllers\ProductSetup;
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\ProBrand;
 use App\Models\ProductSetup\ProType;
-use App\Models\WebSetup\BrandName;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\BrandName;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -55,7 +56,7 @@ class ProTypeController extends Controller
                     ));
                 }
 
-                ProType::create([
+                $rowData = ProType::create([
                     'uid' => Str::uuid(),
                     'name' => $request->name,
                     'status' => $request->status,
@@ -63,6 +64,7 @@ class ProTypeController extends Controller
                     'create_date' => $this->getCurrentDateTime()
                 ]);
 
+                LogService::log(auth()->user()->id, 'Product Type', 'create', $rowData->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -93,12 +95,14 @@ class ProTypeController extends Controller
                     ));
                 }
 
-                $navItem->update([
+                $rowData = $navItem->update([
                     'name' => $request->name,
                     'status' => $request->status,
                     'update_by' => auth()->user()->id,
                     'update_date' => $this->getCurrentDateTime()
                 ]);
+
+                LogService::log(auth()->user()->id, 'Product Type', 'update', $navItem->getChanges());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -121,6 +125,8 @@ class ProTypeController extends Controller
                 'update_by' => auth()->user()->id,
                 'update_date' => $this->getCurrentDateTime()
             ]);
+
+            LogService::log(auth()->user()->id, 'Product Type', 'delete', $permission->getAttributes());
 
             return json_encode(array(
                 "statusCode" => 200

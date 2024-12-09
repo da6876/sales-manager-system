@@ -4,7 +4,8 @@ namespace App\Http\Controllers\ProductSetup;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductSetup\ProBrand;
-use App\Models\WebSetup\SidebarNav;
+use App\Models\settings\SidebarNav;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -24,13 +25,11 @@ class ProBrandController extends Controller
         $this->checkLogin();
         return view('ProductSetup.brand.show');
     }
-
     public function create()
     {
         $this->checkLogin();
         return view('ProductSetup.brand.create');
     }
-
     public function edit($id)
     {
         $this->checkLogin();
@@ -38,7 +37,6 @@ class ProBrandController extends Controller
 
         return view('ProductSetup.brand.edit', [ 'navItem' => $navItem]);
     }
-
     public function store(Request $request)
     {
         try {
@@ -56,7 +54,7 @@ class ProBrandController extends Controller
                     ));
                 }
 
-                ProBrand::create([
+                $rowData= ProBrand::create([
                     'uid' => Str::uuid(),
                     'name' => $request->name,
                     'status' => $request->status,
@@ -64,6 +62,7 @@ class ProBrandController extends Controller
                     'create_date' => $this->getCurrentDateTime()
                 ]);
 
+                LogService::log(auth()->user()->id, 'Product Brand', 'create', $rowData->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -101,6 +100,7 @@ class ProBrandController extends Controller
                     'update_by' => auth()->user()->id,
                     'update_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Product Brand', 'update', $navItem->getChanges());
 
 
                 return json_encode(array(
@@ -116,7 +116,6 @@ class ProBrandController extends Controller
             ]);
         }
     }
-
     public function destroy($id){
         try {
             $permission = ProBrand::where('uid', $id)->first();
@@ -125,6 +124,7 @@ class ProBrandController extends Controller
                 'update_by' => auth()->user()->id,
                 'update_date' => $this->getCurrentDateTime()
             ]);
+            LogService::log(auth()->user()->id, 'Product Brand', 'delete', $permission->getAttributes());
 
             return json_encode(array(
                 "statusCode" => 200
@@ -137,7 +137,6 @@ class ProBrandController extends Controller
             ));;
         }
     }
-
     public function getData(Request $request)
     {
         // Fetch all items with their hierarchy

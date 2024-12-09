@@ -53,20 +53,18 @@
                                 <input type="password" class="form-control" id="password" name="password">
                                 <div class="invalid-feedback"></div>
                             </div>
-
-                            <div class="col-md-4">
-                                <label for="branch_id" class="form-label">Branch Id</label>
-                                <select class="form-control" id="branch_id" name="branch_id">
-                                </select>
+                            <div class="col-md-12">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address">
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="status" class="form-label">Roles</label>
                                 <select class="form-control" id="roles" name="roles">
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="status" class="form-label">Status</label>
                                 <select id="status" class="form-select" name="status">
                                     <option selected value="">Select Status</option>
@@ -110,35 +108,6 @@
                     selectRoles.append('<option value="">Select Role</option>'); // Add default option
                     data.forEach(function(role) {
                         selectRoles.append('<option value="' + role.name + '">' + role.name + '</option>');
-                    });
-                }
-            },
-            error: function () {
-                // Handle AJAX request error
-                swal({
-                    text: "Error occurred while fetching roles",
-                    timer: '1500'
-                });
-            }
-        });
-
-        $.ajax({
-            url: "{{ url('GetBranch') }}",
-            type: "GET",
-            dataType: "JSON",
-            success: function (data) {
-                console.log(data);
-                if (data.statusCode && data.statusCode === 400) {
-                    swal({
-                        text: data.statusMsg || "Roles Not Found",
-                        timer: '1500'
-                    });
-                } else {
-                    var selectRoles = $('#branch_id');
-                    selectRoles.empty();
-                    selectRoles.append('<option value="">Select Branch</option>'); // Add default option
-                    data.forEach(function(role) {
-                        selectRoles.append('<option value="' + role.id + '">' + role.name + '</option>');
                     });
                 }
             },

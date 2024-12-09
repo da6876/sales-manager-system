@@ -37,8 +37,7 @@
                                 <th>Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th>Branch</th>
-                                <th>Branch</th>
+                                <th>Role</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -81,7 +80,6 @@
                     { data: 'name' },
                     { data: 'phone' },
                     { data: 'email' },
-                    { data: 'branch_id' },
                     { data: 'roles_html' },
                     {
                         data: null,

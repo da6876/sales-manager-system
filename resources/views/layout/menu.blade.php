@@ -1,4 +1,5 @@
 <!-- ======= Sidebar ======= -->
+@if(auth()->check())
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         @php
@@ -11,6 +12,9 @@
         @endphp
 
         @foreach ($navItems as $item)
+            @php
+                $fixedName = html_entity_decode($item->name);
+            @endphp
             @if (!$item->is_heading)
                 @php
                     $isActive = $item->url == $currentRoute || $item->children->contains(function($child) use ($currentRoute) {
@@ -20,10 +24,10 @@
 
                 @if ($item->url == "#")
                     <li class="nav-item {{ $isActive ? 'active' : '' }}">
-                        <a class="nav-link {{ $isActive ? '' : 'collapsed' }}" data-bs-target="#{{ Str::slug($item->name) }}-nav" data-bs-toggle="collapse" href="{{ url($item->url) }}">
-                            <i class="{{ $item->icon }}"></i><span>{{ $item->name }}</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <a class="nav-link {{ $isActive ? '' : 'collapsed' }}" data-bs-target="#{{ Str::slug($fixedName) }}-nav" data-bs-toggle="collapse" href="{{ url($item->url) }}">
+                            <i class="{{ $item->icon }}"></i><span>{{ $fixedName }}</span><i class="bi bi-chevron-down ms-auto"></i>
                         </a>
-                        <ul id="{{ Str::slug($item->name) }}-nav" class="nav-content collapse {{ $isActive ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+                        <ul id="{{ Str::slug($fixedName) }}-nav" class="nav-content collapse {{ $isActive ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
                             @foreach ($item->children as $child)
                                 @php
                                     $isChildActive = $child->url == $currentRoute;
@@ -40,26 +44,26 @@
                     <li class="nav-item">
                         <a class="nav-link {{ $isActive ? '' : 'collapsed' }}" href="{{ url($item->url) }}">
                             <i class="{{ $item->icon }}"></i>
-                            <span>{{ $item->name }}</span>
+                            <span>{{ $fixedName }}</span>
                         </a>
                     </li>
                 @endif
             @else
-                <li class="nav-heading">{{ $item->name }}</li>
+                <li class="nav-heading">{{ html_entity_decode($fixedName) }}</li>
             @endif
         @endforeach
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
-                <span>{{ request()->route()->getName() }}</span>
+                <span>{{ $currentRoute }}</span>
             </a>
         </li>
         <!-- End F.A.Q Page Nav -->
 
     </ul>
 </aside>
-
+@endif
 {{--<aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         @foreach ($navItems as $item)

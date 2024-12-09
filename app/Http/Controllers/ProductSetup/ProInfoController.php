@@ -8,6 +8,7 @@ use App\Models\ProductSetup\ProCategory;
 use App\Models\ProductSetup\ProInfo;
 use App\Models\ProductSetup\ProSubCategory;
 use App\Models\ProductSetup\ProType;
+use App\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -119,7 +120,7 @@ class ProInfoController extends Controller
                     $image4fileUrl = "";
                 }
 
-                ProInfo::create([
+                $rowData = ProInfo::create([
                     'name' => $request->name,
                     'type_id' => $request->type_id,
                     'cat_id' => $request->cat_id,
@@ -139,6 +140,7 @@ class ProInfoController extends Controller
                     'create_by' => auth()->user()->id,
                     'create_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Product', 'create', $rowData->getAttributes());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -254,6 +256,7 @@ class ProInfoController extends Controller
                     'update_by' => auth()->user()->id,
                     'update_date' => $this->getCurrentDateTime()
                 ]);
+                LogService::log(auth()->user()->id, 'Product', 'update', $navItem->getChanges());
 
                 return json_encode(array(
                     "statusCode" => 200,
@@ -278,6 +281,7 @@ class ProInfoController extends Controller
                 'update_by' => auth()->user()->id,
                 'update_date' => $this->getCurrentDateTime()
             ]);
+            LogService::log(auth()->user()->id, 'Product', 'delete', $permission->getAttributes());
 
             return json_encode(array(
                 "statusCode" => 200
@@ -331,7 +335,7 @@ class ProInfoController extends Controller
         $totalCount = $query->count();
 
         $data = $query->skip($request->input('start', 0))
-            ->take($request->input('length', 10))
+            ->take($request->input('length', 20))
             ->get();
 
         return response()->json([
