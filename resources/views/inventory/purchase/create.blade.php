@@ -38,42 +38,44 @@
                         <!-- Multi Columns Form -->
                         <form class="row g-3" id="myForm">@csrf
 
-                            <div class="col-md-4">
-                                <label for="Category_ID" class="form-label">Product Category</label>
-                                <select id="Category_ID" class="form-select select2" name="Category_ID">
-                                    <option selected value="">Select Category</option>
-                                </select>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="Sub_Category_ID" class="form-label">Product Sub Category</label>
-                                <select id="Sub_Category_ID" class="form-select select2" name="Sub_Category_ID">
-                                    <option selected value="">Select Sub Category</option>
-                                </select>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="Vendor_ID" class="form-label">Vendor</label>
-                                <select id="Vendor_ID" class="form-select select2" name="Vendor_ID">
-                                    <option selected value="">Select Vendor</option>
-                                </select>
-                                <div class="invalid-feedback"></div>
-                            </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="Challan_Number" class="form-label">Challan Number</label>
                                 <input type="text" class="form-control" id="Challan_Number" name="Challan_Number">
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-9">
                                 <label for="Product_ID" class="form-label">Product</label>
                                 <select id="Product_ID" class="form-select select2" name="Product_ID">
                                     <option selected value="">Select Product</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
+                            <div class="col-md-3">
+                                <label for="Category_ID" class="form-label">Product Category</label>
+                                <select id="Category_ID" class="form-select select2" name="Category_ID">
+                                    <option selected value="">Select Category</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Sub_Category_ID" class="form-label">Product Sub Category</label>
+                                <select id="Sub_Category_ID" class="form-select select2" name="Sub_Category_ID">
+                                    <option selected value="">Select Sub Category</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label for="pro_type" class="form-label">Product Type</label>
+                                <select id="pro_type" class="form-select select2" name="pro_type">
+                                    <option selected value="">Select Product Type</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+
+                            <div class="col-md-3">
                                 <label for="Unit" class="form-label">Unit</label>
                                 <select id="Unit" class="form-select select2" name="Unit">
                                     <option selected value="">Select Unit</option>
@@ -85,7 +87,30 @@
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <label for="Color" class="form-label">Size</label>
+                                <select id="Color" class="form-select select2" name="Color" multiple>
+                                    <option selected value="">Select Size</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Size" class="form-label">Color</label>
+                                <select id="Size" class="form-select select2" name="Size" multiple>
+                                    <option selected value="">Select Size</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="Vendor_ID" class="form-label">Vendor</label>
+                                <select id="Vendor_ID" class="form-select select2" name="Vendor_ID">
+                                    <option selected value="">Select Vendor</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-3">
                                 <label for="Purchase_Payment_Type" class="form-label">Payment Type</label>
                                 <select id="Purchase_Payment_Type" class="form-select select2" name="Purchase_Payment_Type">
                                     <option selected value="">Select Payment Type</option>
@@ -107,33 +132,30 @@
                                 <input type="text" class="form-control" id="Purchase_Rate" name="Purchase_Rate">
                                 <div class="invalid-feedback"></div>
                             </div>
+
                             <div class="col-md-4">
                                 <label for="Sales_Rate" class="form-label">Price MRP</label>
                                 <input type="text" class="form-control" id="Sales_Rate" name="Sales_Rate">
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="col-md-4">
-                                <label for="Color" class="form-label">Size</label>
-                                <select id="Color" class="form-select select2" name="Color" multiple>
-                                    <option selected value="">Select Size</option>
-                                    <option value="A">Active</option>
-                                    <option value="I">InActive</option>
-                                </select>
-                                <div class="invalid-feedback"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="Size" class="form-label">Color</label>
-                                <select id="Size" class="form-select select2" name="Size" multiple>
-                                    <option selected value="">Select Size</option>
-                                    <option value="A">Active</option>
-                                    <option value="I">InActive</option>
+
+
+                            <div class="col-md-3">
+                                <label for="Purchase_Payment_Type" class="form-label">Payment Type</label>
+                                <select id="Purchase_Payment_Type" class="form-select select2" name="Purchase_Payment_Type">
+                                    <option selected value="">Select Payment Type</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Check">Check</option>
+                                    <option value="MFS">MFS</option>
                                 </select>
                                 <div class="invalid-feedback"></div>
                             </div>
 
+
+
                             <div class="container col-md-8">
                                 <div class="col-md-12">
-                                    <label for="image" class="form-label">Image 4 :</label>
+                                    <label for="image" class="form-label">Image :</label>
                                     <input type="file" class="form-control" id="image" name="image" onchange="preview(4)" accept="image/*">
                                     <div class="invalid-feedback"></div>
                                 </div>
@@ -171,79 +193,44 @@
         });
         var csrf_tokens = document.querySelector('meta[name="csrf-token"]').content;
 
-        showProductType();showCategory();showProduct();
+        showProductType();showCategory();showProduct();showVendor();
         function addData() {
-            if (!editorInstance) {
-                console.error('CKEditor instance is not available.');
-                return false;
-            }
-            var ckeditorContent = editorInstance.getData();
-            var formElement = document.querySelector('#myForm');
-            if (!formElement) {
-                console.error('Form element not found.');
-                return false;
-            }
-            var formData = new FormData(formElement);
-            formData.append('details', ckeditorContent);
-            var url = "{{ url('ProInfo') }}";
+            url = "{{ url('Purchase') }}";
             $.ajax({
                 url: url,
                 type: "POST",
-                data: formData,
+                data: new FormData($("#addFrom form")[0]),
                 contentType: false,
                 processData: false,
                 success: function (data) {
                     var dataResult = JSON.parse(data);
                     if (dataResult.statusCode == 200) {
                         swal("Success", dataResult.statusMsg);
-                        // formElement.reset();
-                    } else if (dataResult.statusCode == 204) {
+                        $('#addFrom form')[0].reset();
+                    }else if (dataResult.statusCode == 204) {
                         showErrors(dataResult.errors);
-                    } else {
+                    }else{
                         swal({
                             title: "Oops",
                             text: dataResult.statusMsg,
                             icon: "error",
                             timer: '1500'
                         });
+
                     }
-                },
-                error: function (data) {
+                }, error: function (data) {
                     console.log(data);
                     swal({
                         title: "Oops",
-                        text: "Error occurred",
+                        text: "Error occured",
                         icon: "error",
                         timer: '1500'
                     });
                 }
             });
-
             return false;
-        }
+        };
 
-        function showData(id) {
-            $.ajax({
-                url: "{{ url('Division') }}" + '/' + id,
-                type: "GET",
-                dataType: "JSON",
-                success: function (data) {
-                    $('#addModal form')[0].reset();
-                    $('.role-title').text('Update Division');
-                    $('#addModal').modal('show');
-                    $('#id').val(data.id);
-                    $('#name').val(data.name);
-                    $('#status').val(data.status);
-                }, error: function () {
-                    swal({
-                        title: "Oops",
-                        text: "Error Occured",
-                        icon: "error",
-                        timer: '1500'
-                    });
-                }
-            });
-        }
 
         function preview(id) {
             const fileInput = document.getElementById(`image${id}`);
@@ -276,10 +263,10 @@
                                 productType[x].name +
                                 "</option>";
                         }
-                        $("#Purchase_Payment_Type").html(markup).show();
+                        $("#pro_type").html(markup).show();
                     } else {
                         var markup = "<option value=''>Select Product Type</option>";
-                        $("#Purchase_Payment_Type").html(markup).show();
+                        $("#pro_type").html(markup).show();
                     }
                 },
             });
@@ -316,9 +303,46 @@
             });
         }
 
+        function showVendor() {
+            var url = "{{ url('dropdownSelect') }}";
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    ViewType: "Vendor",
+                    _token: csrf_tokens
+                },
+                datatype: "JSON",
+                success: function(data) {
+                    var productType = $.parseJSON(data);
+                    if (productType != "") {
+                        var markup = "<option value=''>Select Vendor</option>";
+                        for (var x = 0; x < productType.length; x++) {
+                            markup +=
+                                "<option value=" +
+                                productType[x].id +
+                                ">" +
+                                productType[x].vendor_name +
+                                "</option>";
+                        }
+                        $("#Vendor_ID").html(markup).show();
+                    } else {
+                        var markup = "<option value=''>Select Vendor</option>";
+                        $("#Vendor_ID").html(markup).show();
+                    }
+                },
+            });
+        }
+
         $("#Category_ID").change(function() {
             var Category_ID = this.value;
             showSubCategory(Category_ID);
+        });
+
+        $("#pro_type").change(function() {
+            var pro_type_id = this.value;
+            showColor(pro_type_id);
+            showSize(pro_type_id);
         });
 
         function showSubCategory(Category_ID) {
@@ -348,6 +372,70 @@
                     } else {
                         var markup = "<option value=''>Select Product Type</option>";
                         $("#Sub_Category_ID").html(markup).show();
+                    }
+                },
+            });
+        }
+
+        function showColor(pro_type_id) {
+            var url = "{{ url('dropdownSelect') }}";
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    ViewType: "Color",
+                    pro_type_id: pro_type_id,
+                    _token: csrf_tokens
+                },
+                datatype: "JSON",
+                success: function(data) {
+                    var productType = $.parseJSON(data);
+                    if (productType != "") {
+                        var markup = "<option value=''>Select Color</option>";
+                        for (var x = 0; x < productType.length; x++) {
+                            markup +=
+                                "<option value=" +
+                                productType[x].id +
+                                ">" +
+                                productType[x].name +
+                                "</option>";
+                        }
+                        $("#Color").html(markup).show();
+                    } else {
+                        var markup = "<option value=''>Select Color</option>";
+                        $("#Color").html(markup).show();
+                    }
+                },
+            });
+        }
+
+        function showSize(pro_type_id) {
+            var url = "{{ url('dropdownSelect') }}";
+            $.ajax({
+                url: url,
+                type: "GET",
+                data: {
+                    ViewType: "Size",
+                    pro_type_id: pro_type_id,
+                    _token: csrf_tokens
+                },
+                datatype: "JSON",
+                success: function(data) {
+                    var productType = $.parseJSON(data);
+                    if (productType != "") {
+                        var markup = "<option value=''>Select Size</option>";
+                        for (var x = 0; x < productType.length; x++) {
+                            markup +=
+                                "<option value=" +
+                                productType[x].id +
+                                ">" +
+                                productType[x].name +
+                                "</option>";
+                        }
+                        $("#Size").html(markup).show();
+                    } else {
+                        var markup = "<option value=''>Select Size</option>";
+                        $("#Size").html(markup).show();
                     }
                 },
             });

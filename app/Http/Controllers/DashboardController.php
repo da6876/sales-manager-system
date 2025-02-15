@@ -32,7 +32,7 @@ class DashboardController extends Controller
     public function index()
     {
         $this->checkLogin();
-        if (auth()->user()->getRoleNames()->first() == 'Branch Admin' || auth()->user()->getRoleNames()->first() == 'Branch Manager') {
+        if (auth()->user()->getRoleNames()->first() == 'Branch Admin' || auth()->user()->getRoleNames()->first() == 'Branch Manager' || auth()->user()->getRoleNames()->first() == 'Branch Keeper') {
             return view('branch-dashboard');
         }else if (auth()->user()->getRoleNames()->first() == 'Admin' || auth()->user()->getRoleNames()->first() == 'Root') {
             return view('welcomes');

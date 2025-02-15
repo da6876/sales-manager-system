@@ -33,10 +33,15 @@
                         <table class="table table-hover table-sm" id="dataTableItem">
                             <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th>Stock ID</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Sub Category</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Purchase Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                         </table>
@@ -53,7 +58,7 @@
 @section('script')
     <script>
         var TableData;
-        var url = "{{ route('all.Purchase') }}";
+        var url = "{{ route('all.Purchase') }}"; // Assuming you have a route that returns stock data.
 
         function LoadDataTable() {
             TableData = $('#dataTableItem').DataTable({
@@ -67,12 +72,17 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     data: function(d) {
-                        d.form_data = $("#fromData").serialize(); // Send form data as POST data
+                        d.form_data = $("#fromData").serialize(); // Send form data as POST data if any filters exist
                     }
                 },
                 columns: [
                     { data: 'id' },
-                    {data: 'name',},
+                    { data: 'product_name' }, // Assuming product name is provided in the response
+                    { data: 'category_name' }, // Assuming category name is provided in the response
+                    { data: 'sub_category_name' }, // Assuming sub-category name is provided in the response
+                    { data: 'color_name' }, // Assuming color name is provided in the response
+                    { data: 'size_name' }, // Assuming size name is provided in the response
+                    { data: 'Purchase_Date' },
                     {
                         data: 'status',
                         render: function(data, type, row) {
@@ -100,8 +110,8 @@
                         orderable: false,
                         defaultContent: "NO Data",
                         render: function(data, type, row) {
-                            return `<button type="button" class="btn btn-outline-info btn-sm edit-button" data-id="${row.uid}"><i class="bi bi-pencil-fill"></i></button>
-                            <button type="button" class="btn btn-outline-danger btn-sm delete-button" data-id="${row.uid}"><i class="bi bi-x-circle-fill"></i></button>`;
+                            return `<button type="button" class="btn btn-outline-info btn-sm edit-button" data-id="${row.id}"><i class="bi bi-pencil-fill"></i></button>
+                        <button type="button" class="btn btn-outline-danger btn-sm delete-button" data-id="${row.id}"><i class="bi bi-x-circle-fill"></i></button>`;
                         }
                     }
                 ],
@@ -128,13 +138,11 @@
             LoadDataTable();
         });
 
-        function showData(id) {
-            var url = "{{ route('Purchase.edit', ':id') }}"; // Use named route with placeholder
-            var fullUrl = url.replace(':id', id); // Replace placeholder with actual ID
-            window.location.href = fullUrl; // Redirect to the constructed URL
-        }
+        // Function to show data on edit
 
-        function  deleteData(id) {
+
+        // Function to delete data
+        function deleteData(id) {
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
             swal({
                 title: "Are you sure?",
@@ -146,7 +154,7 @@
                 .then((willDelete) => {
                     if (willDelete) {
                         $.ajax({
-                            url: "{{ url('Purchase') }}" + '/' + id,
+                            url: "{{ url('Stock') }}" + '/' + id,
                             type: "POST",
                             data: {'_method': 'DELETE', '_token': csrf_token},
                             success: function (data) {
@@ -178,6 +186,5 @@
                     }
                 });
         }
-
     </script>
 @endsection
