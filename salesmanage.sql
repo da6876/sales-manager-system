@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2024 at 03:00 PM
+-- Generation Time: Feb 15, 2025 at 02:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -274,7 +274,63 @@ INSERT INTO `logs` (`id`, `user_id`, `table_name`, `action`, `changes`, `created
 (213, '5', 'Sidebar Nav', 'create', '{\"uid\":\"7e2a4493-d304-488e-aeb5-675db987d4cb\",\"parent_id\":63,\"name\":\"Purchase\",\"icon\":\"bi\",\"url\":\"Roles\",\"order\":\"1\",\"is_collapsed\":\"1\",\"is_heading\":0,\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-09 19:00:13\",\"id\":64}', '2024-12-09 13:00:13', '2024-12-09 13:00:13'),
 (214, '5', 'Menu Permissions Role', 'Save', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2024-12-09 13:00:42', '2024-12-09 13:00:42'),
 (215, '5', 'Menu Permissions Role', 'Save', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2024-12-09 13:00:43', '2024-12-09 13:00:43'),
-(216, '5', 'Sidebar Nav', 'update', '{\"url\":\"Purchase\",\"update_by\":5,\"update_date\":\"2024-12-09 19:13:49\"}', '2024-12-09 13:13:49', '2024-12-09 13:13:49');
+(216, '5', 'Sidebar Nav', 'update', '{\"url\":\"Purchase\",\"update_by\":5,\"update_date\":\"2024-12-09 19:13:49\"}', '2024-12-09 13:13:49', '2024-12-09 13:13:49'),
+(217, '5', 'User ', 'Login', '{\"id\":5,\"uid\":\"4d33c03d-a283-4bc3-8322-4d5e7fa168de\",\"name\":\"Super1 Admin\",\"phone\":\"01684924439\",\"email\":\"superadmin@gmail.com\",\"address\":\"232\\/1,South, Paik-Para,Mirpur,Dhaka\",\"status\":\"A\",\"profile_image\":\"assets\\/profile_img\\/66f13d355f119.png\",\"email_verified_at\":\"2024-09-04 13:04:32\",\"password\":\"$2y$10$kvKVOhFUF4ZZHlHfGhtgHe9muYMrgux4F5Ok0o5dql2y0UHdMElBm\",\"remember_token\":null,\"created_at\":\"2024-09-04 13:04:32\",\"updated_at\":\"2024-12-10 01:05:06\",\"latitude\":\"23.7856607\",\"longitude\":\"90.3613702\"}', '2024-12-09 19:05:06', '2024-12-09 19:05:06'),
+(218, '5', 'Product Purchases', 'create', '{\"Product_ID\":\"14\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"3\",\"Vendor_ID\":\"1\",\"Challan_Number\":\"432\",\"Unit\":\"GM\",\"pro_type\":\"102\",\"Color\":\"3\",\"Size\":\"4\",\"Purchase_Qty\":\"22\",\"Purchase_Rate\":\"343\",\"Sales_Rate\":\"33\",\"Purchase_Payment_Type\":\"Cash\",\"Purchase_Date\":\"2024-12-10 02:19:04\",\"image\":{},\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:19:04\",\"id\":1}', '2024-12-09 20:19:04', '2024-12-09 20:19:04'),
+(219, '5', 'Product Purchases', 'create', '{\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Vendor_ID\":\"1\",\"Challan_Number\":\"TESTA22\",\"Unit\":\"KG\",\"pro_type\":\"101\",\"Color\":\"1\",\"Size\":\"2\",\"Purchase_Qty\":\"5\",\"Purchase_Rate\":\"500\",\"Sales_Rate\":\"550\",\"Purchase_Payment_Type\":\"Cash\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"image\":\"assets\\/purchase_img\\/675753c743a2a.jpg\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\",\"id\":3}', '2024-12-09 20:32:07', '2024-12-09 20:32:07'),
+(220, '5', 'Product Stock', 'create', '[{\"Purchase_ID\":3,\"pro_qrcode\":\"5d9f5c30-6f26-493f-9697-e8f3422290ef\",\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\"},{\"Purchase_ID\":3,\"pro_qrcode\":\"9daf09f3-6b44-4080-a074-8673807b9c72\",\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\"},{\"Purchase_ID\":3,\"pro_qrcode\":\"c4c61340-5448-4358-9991-49f0db176343\",\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\"},{\"Purchase_ID\":3,\"pro_qrcode\":\"9524eac5-6c5d-4fcc-ac51-baa1d65e3023\",\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\"},{\"Purchase_ID\":3,\"pro_qrcode\":\"e008ae7c-6b79-4c6d-8006-601d3f5ce756\",\"Product_ID\":\"12\",\"Category_ID\":\"2\",\"Sub_Category_ID\":\"1\",\"Purchase_Date\":\"2024-12-10 02:32:07\",\"status\":\"A\",\"create_by\":5,\"create_date\":\"2024-12-10 02:32:07\"}]', '2024-12-09 20:32:07', '2024-12-09 20:32:07'),
+(221, '5', 'Brand Name', 'update', '{\"name\":\"Brand Beauty\",\"details\":\"SOC Foodi\",\"logo\":\"assets\\/logo\\/6757577024930.png\",\"update_date\":\"2024-12-10 02:47:44\"}', '2024-12-09 20:47:44', '2024-12-09 20:47:44'),
+(222, '5', 'Brand Name', 'update', '{\"name\":\"Brand Shop\",\"details\":\"Brand Beauty\",\"update_date\":\"2024-12-10 02:48:10\"}', '2024-12-09 20:48:10', '2024-12-09 20:48:10'),
+(223, '5', 'User ', 'Login', '{\"id\":5,\"uid\":\"4d33c03d-a283-4bc3-8322-4d5e7fa168de\",\"name\":\"Super1 Admin\",\"phone\":\"01684924439\",\"email\":\"superadmin@gmail.com\",\"address\":\"232\\/1,South, Paik-Para,Mirpur,Dhaka\",\"status\":\"A\",\"profile_image\":\"assets\\/profile_img\\/66f13d355f119.png\",\"email_verified_at\":\"2024-09-04 13:04:32\",\"password\":\"$2y$10$kvKVOhFUF4ZZHlHfGhtgHe9muYMrgux4F5Ok0o5dql2y0UHdMElBm\",\"remember_token\":null,\"created_at\":\"2024-09-04 13:04:32\",\"updated_at\":\"2025-02-15 17:19:31\",\"latitude\":\"23.7857496\",\"longitude\":\"90.3613519\"}', '2025-02-15 11:19:31', '2025-02-15 11:19:31'),
+(224, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:19:52', '2025-02-15 11:19:52'),
+(225, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:20:13', '2025-02-15 11:20:13'),
+(226, '10', 'User ', 'Login', '{\"id\":10,\"uid\":\"a535c002-8e92-4157-a1fa-4216013d5bc0\",\"name\":\"Branch 1 Manager\",\"phone\":\"01222222\",\"email\":\"branch1manager@gmail.com\",\"address\":\"Mirpur-1,Dhaka,Bangladesh\",\"status\":null,\"profile_image\":\"\",\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2024-09-19 16:07:25\",\"updated_at\":\"2025-02-15 17:21:00\",\"latitude\":\"23.7857496\",\"longitude\":\"90.3613404\"}', '2025-02-15 11:21:00', '2025-02-15 11:21:00'),
+(227, '10', 'Order', 'create', '{\"order_number\":\"ORD-1739618509\",\"order_date\":\"2025-02-15T11:21:49.290590Z\",\"cust_id\":\"9\",\"vat_amount\":\"20.00\",\"discount_amount\":\"10.00\",\"received_amount\":\"500.00\",\"revised_amount\":\"-290.00\",\"total_amount\":\"210.00\",\"status\":\"A\",\"payment_status\":\"A\",\"payment_method\":\"Cash\",\"create_by\":10,\"create_date\":\"2025-02-15 17:21:49\",\"id\":58}', '2025-02-15 11:21:49', '2025-02-15 11:21:49'),
+(228, '10', 'Order Details', 'create', '{\"id\":\"12\",\"uid\":\"3bbb1e29-e7ac-49b7-bf02-d49ab6afc053\",\"title\":\"Beef Burger\",\"imageUrl\":\"assets\\/product_img\\/66e0213f2f492.webp\",\"price\":200,\"quantity\":1}', '2025-02-15 11:21:49', '2025-02-15 11:21:49'),
+(229, '15', 'User ', 'Login', '{\"id\":15,\"uid\":\"ee3b36b9-dd00-402f-88ba-7ce49edcf404\",\"name\":\"Dhali Abir\",\"phone\":\"01684924439\",\"email\":\"dhaliabir404@gmail.com\",\"address\":\"Mirpur-1,Dhaka,Bangladesh\",\"status\":null,\"profile_image\":\"assets\\/profile_img\\/66f13d06cd000.png\",\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2024-09-22 17:36:18\",\"updated_at\":\"2025-02-15 17:26:09\",\"latitude\":\"23.7857672\",\"longitude\":\"90.3613357\"}', '2025-02-15 11:26:09', '2025-02-15 11:26:09'),
+(230, '10', 'User Profile', 'update', NULL, '2025-02-15 11:26:54', '2025-02-15 11:26:54'),
+(231, '10', 'User Profile', 'update', NULL, '2025-02-15 11:27:30', '2025-02-15 11:27:30'),
+(232, '10', 'User Profile', 'update', NULL, '2025-02-15 11:27:57', '2025-02-15 11:27:57'),
+(233, '10', 'User Profile', 'update', NULL, '2025-02-15 11:28:23', '2025-02-15 11:28:23'),
+(234, '5', 'User', 'create', '{\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"address\":\"Minima minima aut cu\",\"email\":\"luroxylar@mailinator.com\",\"phone\":\"7456456456\",\"password\":\"$2y$10$trtKDVIlTHpRyAK03sTy4uY0JAEAmAaOCPZ542gXiraYQMpZqdjQq\",\"updated_at\":\"2025-02-15 17:30:47\",\"created_at\":\"2025-02-15 17:30:47\",\"id\":17}', '2025-02-15 11:30:47', '2025-02-15 11:30:47'),
+(235, '5', 'Role', 'create', '{\"guard_name\":\"web\",\"name\":\"Branch Keeper\",\"updated_at\":\"2025-02-15 17:31:20\",\"created_at\":\"2025-02-15 17:31:20\",\"id\":9}', '2025-02-15 11:31:20', '2025-02-15 11:31:20'),
+(236, '5', 'User', 'update', '{\"password\":\"$2y$10$ctgc5J99OTmxFs\\/QnZkace.HnI1FXI4vK3VeR8u42hZjnCZJkIYlq\",\"updated_at\":\"2025-02-15 17:31:31\"}', '2025-02-15 11:31:31', '2025-02-15 11:31:31'),
+(237, '17', 'User ', 'Login', '{\"id\":17,\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"phone\":\"7456456456\",\"email\":\"luroxylar@mailinator.com\",\"address\":\"Minima minima aut cu\",\"status\":null,\"profile_image\":null,\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2025-02-15 17:30:47\",\"updated_at\":\"2025-02-15 17:32:36\",\"latitude\":\"23.7857543\",\"longitude\":\"90.3613465\"}', '2025-02-15 11:32:36', '2025-02-15 11:32:36'),
+(238, '5', 'Menu Permissions Role', 'Save', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:32:55', '2025-02-15 11:32:55'),
+(239, '5', 'Menu Permissions Role', 'Save', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:33:08', '2025-02-15 11:33:08'),
+(240, '17', 'User ', 'Logout', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:33:20', '2025-02-15 11:33:20'),
+(241, '17', 'User ', 'Login', '{\"id\":17,\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"phone\":\"7456456456\",\"email\":\"luroxylar@mailinator.com\",\"address\":\"Minima minima aut cu\",\"status\":null,\"profile_image\":null,\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2025-02-15 17:30:47\",\"updated_at\":\"2025-02-15 17:33:32\",\"latitude\":\"23.785756\",\"longitude\":\"90.361349\"}', '2025-02-15 11:33:32', '2025-02-15 11:33:32'),
+(242, '10', 'User ', 'Logout', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:33:50', '2025-02-15 11:33:50'),
+(243, '10', 'User ', 'Login', '{\"id\":10,\"uid\":\"a535c002-8e92-4157-a1fa-4216013d5bc0\",\"name\":\"Branch 1 Manager\",\"phone\":\"01222222\",\"email\":\"branch1manager@gmail.com\",\"address\":\"Mirpur-1,Dhaka,Bangladesh\",\"status\":null,\"profile_image\":\"assets\\/profile_img\\/67b07a565cfa6.jpg\",\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2024-09-19 16:07:25\",\"updated_at\":\"2025-02-15 17:34:01\",\"latitude\":\"23.7857558\",\"longitude\":\"90.3613491\"}', '2025-02-15 11:34:01', '2025-02-15 11:34:01'),
+(244, '17', 'User ', 'Logout', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:34:15', '2025-02-15 11:34:15'),
+(245, '17', 'User ', 'Login', '{\"id\":17,\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"phone\":\"7456456456\",\"email\":\"luroxylar@mailinator.com\",\"address\":\"Minima minima aut cu\",\"status\":null,\"profile_image\":null,\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2025-02-15 17:30:47\",\"updated_at\":\"2025-02-15 17:34:27\",\"latitude\":\"23.7857521\",\"longitude\":\"90.3613452\"}', '2025-02-15 11:34:27', '2025-02-15 11:34:27'),
+(246, '5', 'Permission To Role', 'Get', NULL, '2025-02-15 11:34:51', '2025-02-15 11:34:51'),
+(247, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 11:34:57', '2025-02-15 11:34:57'),
+(248, '17', 'User ', 'Logout', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:35:07', '2025-02-15 11:35:07'),
+(249, '17', 'User ', 'Login', '{\"id\":17,\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"phone\":\"7456456456\",\"email\":\"luroxylar@mailinator.com\",\"address\":\"Minima minima aut cu\",\"status\":null,\"profile_image\":null,\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2025-02-15 17:30:47\",\"updated_at\":\"2025-02-15 17:35:19\",\"latitude\":\"23.7857505\",\"longitude\":\"90.3613495\"}', '2025-02-15 11:35:19', '2025-02-15 11:35:19'),
+(250, '5', 'Permission To Role', 'Get', '{\"65\":65}', '2025-02-15 11:35:23', '2025-02-15 11:35:23'),
+(251, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 11:35:37', '2025-02-15 11:35:37'),
+(252, '5', 'Permission To Role', 'Get', '{\"65\":65,\"66\":66}', '2025-02-15 11:35:42', '2025-02-15 11:35:42'),
+(253, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:36:20', '2025-02-15 11:36:20'),
+(254, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:36:24', '2025-02-15 11:36:24'),
+(255, '5', 'Permission To Role', 'Get', '{\"65\":65,\"66\":66}', '2025-02-15 11:36:31', '2025-02-15 11:36:31'),
+(256, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 11:36:35', '2025-02-15 11:36:35'),
+(257, '17', 'User ', 'Logout', '{\"attributes\":{},\"request\":{},\"query\":{},\"server\":{},\"files\":{},\"cookies\":{},\"headers\":{}}', '2025-02-15 11:36:41', '2025-02-15 11:36:41'),
+(258, '17', 'User ', 'Login', '{\"id\":17,\"uid\":\"6fe758f7-fd7c-4ad3-a8e9-298381e9961f\",\"name\":\"Arsenio Mercer\",\"phone\":\"7456456456\",\"email\":\"luroxylar@mailinator.com\",\"address\":\"Minima minima aut cu\",\"status\":null,\"profile_image\":null,\"email_verified_at\":null,\"password\":\"$2y$10$72mKMMGEbjM\\/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu\",\"remember_token\":null,\"created_at\":\"2025-02-15 17:30:47\",\"updated_at\":\"2025-02-15 17:36:52\",\"latitude\":\"23.785758\",\"longitude\":\"90.3613488\"}', '2025-02-15 11:36:52', '2025-02-15 11:36:52'),
+(259, '5', 'Permission To Role', 'Get', '{\"65\":65,\"66\":66,\"67\":67}', '2025-02-15 11:36:57', '2025-02-15 11:36:57'),
+(260, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:36:59', '2025-02-15 11:36:59'),
+(261, '5', 'Permission To Role', 'Get', '{\"65\":65,\"66\":66,\"67\":67}', '2025-02-15 11:37:04', '2025-02-15 11:37:04'),
+(262, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 11:37:14', '2025-02-15 11:37:14'),
+(263, '5', 'Permission To Role', 'Get', '{\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71}', '2025-02-15 11:37:21', '2025-02-15 11:37:21'),
+(264, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 11:37:31', '2025-02-15 11:37:31'),
+(265, '5', 'Permission To Role', 'Get', '{\"45\":45,\"46\":46,\"47\":47,\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71,\"73\":73,\"75\":75,\"76\":76,\"77\":77}', '2025-02-15 11:38:47', '2025-02-15 11:38:47'),
+(266, '5', 'Permission To Role', 'Get', '{\"49\":49,\"50\":50,\"51\":51,\"53\":53,\"54\":54,\"55\":55,\"57\":57,\"58\":58,\"59\":59,\"61\":61,\"62\":62,\"63\":63,\"65\":65,\"66\":66,\"67\":67,\"69\":69,\"70\":70,\"71\":71}', '2025-02-15 12:02:38', '2025-02-15 12:02:38'),
+(267, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 12:02:53', '2025-02-15 12:02:53'),
+(268, '5', 'Permission To Role', 'Get', NULL, '2025-02-15 12:02:57', '2025-02-15 12:02:57'),
+(269, '5', 'Permission To Role', 'Get', NULL, '2025-02-15 12:03:07', '2025-02-15 12:03:07'),
+(270, '5', 'Give Permission To Role', 'Added', '{\"id\":9,\"name\":\"Branch Keeper\",\"guard_name\":\"web\",\"created_at\":\"2025-02-15 17:31:20\",\"updated_at\":\"2025-02-15 17:31:20\"}', '2025-02-15 12:03:11', '2025-02-15 12:03:11'),
+(271, '5', 'Permission To Role', 'Get', '{\"65\":65}', '2025-02-15 12:03:25', '2025-02-15 12:03:25'),
+(272, '5', 'Permission To Role', 'Get', '{\"65\":65}', '2025-02-15 12:04:11', '2025-02-15 12:04:11');
 
 -- --------------------------------------------------------
 
@@ -334,7 +390,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (5, 'App\\Models\\User', 5),
 (6, 'App\\Models\\User', 15),
-(7, 'App\\Models\\User', 10);
+(7, 'App\\Models\\User', 10),
+(9, 'App\\Models\\User', 17);
 
 -- --------------------------------------------------------
 
@@ -1278,7 +1335,97 @@ INSERT INTO `operationlogs` (`LogID`, `OperationType`, `TableName`, `RecordID`, 
 (917, 'CREATE', 'sms_web_sidebar_menu', 64, '2024-12-09 19:00:13', NULL, 'uid:7e2a4493-d304-488e-aeb5-675db987d4cb, parent_id:63, name:Purchase, icon:bi, url:Roles, order:1, is_collapsed:1, is_heading:0, permission_id:0, status:A, create_by:5, create_date:2024-12-09 19:00:13'),
 (918, 'CREATE', 'role_sidebar_menu', 70, '2024-12-09 19:00:42', NULL, 'role_id:5, sidebar_nav_id:63'),
 (919, 'CREATE', 'role_sidebar_menu', 71, '2024-12-09 19:00:42', NULL, 'role_id:5, sidebar_nav_id:64'),
-(920, 'UPDATE', 'sms_web_sidebar_menu', 64, '2024-12-09 19:13:49', NULL, 'uid:7e2a4493-d304-488e-aeb5-675db987d4cb, parent_id:63, name:Purchase, icon:bi, url:Purchase, order:1, is_collapsed:1, is_heading:0, permission_id:0, status:A, update_by:5, update_date:2024-12-09 19:13:49');
+(920, 'UPDATE', 'sms_web_sidebar_menu', 64, '2024-12-09 19:13:49', NULL, 'uid:7e2a4493-d304-488e-aeb5-675db987d4cb, parent_id:63, name:Purchase, icon:bi, url:Purchase, order:1, is_collapsed:1, is_heading:0, permission_id:0, status:A, update_by:5, update_date:2024-12-09 19:13:49'),
+(921, 'UPDATE', 'users', 5, '2024-12-10 01:05:06', 'uid:4d33c03d-a283-4bc3-8322-4d5e7fa168de, name:Super1 Admin, address:232/1,South, Paik-Para,Mirpur,Dhaka, phone:01684924439, email:superadmin@gmail.com, status:A, email_verified_at:2024-09-04 13:04:32, updated_at:2024-12-09 18:54:16, latitude:23.7426391, longitude:90.4138132', 'uid:4d33c03d-a283-4bc3-8322-4d5e7fa168de, name:Super1 Admin, address:232/1,South, Paik-Para,Mirpur,Dhaka, phone:01684924439, email:superadmin@gmail.com, status:A, email_verified_at:2024-09-04 13:04:32, updated_at:2024-12-10 01:05:06, latitude:23.7856607, longitude:90.3613702'),
+(922, 'CREATE', 'sms_protype', 101, '2024-12-10 01:49:03', NULL, 'uid:P001, name:T-Shirt, status:active, create_by:admin, create_date:2024-12-01 09:00:00'),
+(923, 'CREATE', 'sms_protype', 102, '2024-12-10 01:49:03', NULL, 'uid:P002, name:Jeans, status:active, create_by:admin, create_date:2024-12-01 09:10:00'),
+(924, 'CREATE', 'sms_protype', 103, '2024-12-10 01:49:03', NULL, 'uid:P003, name:Jacket, status:inactive, create_by:admin, create_date:2024-12-02 14:00:00'),
+(925, 'UPDATE', 'sms_protype', 101, '2024-12-10 01:53:36', 'uid:P001, name:T-Shirt, status:active, create_by:admin, create_date:2024-12-01 09:00:00, update_by:admin, update_date:2024-12-01 09:00:00', 'uid:P001, name:T-Shirt, status:A, create_by:admin, create_date:2024-12-01 09:00:00, update_by:admin, update_date:2024-12-01 09:00:00'),
+(926, 'UPDATE', 'sms_protype', 102, '2024-12-10 01:53:38', 'uid:P002, name:Jeans, status:active, create_by:admin, create_date:2024-12-01 09:10:00, update_by:admin, update_date:2024-12-01 09:10:00', 'uid:P002, name:Jeans, status:A, create_by:admin, create_date:2024-12-01 09:10:00, update_by:admin, update_date:2024-12-01 09:10:00'),
+(927, 'UPDATE', 'sms_protype', 103, '2024-12-10 01:53:41', 'uid:P003, name:Jacket, status:inactive, create_by:admin, create_date:2024-12-02 14:00:00, update_by:admin, update_date:2024-12-02 14:00:00', 'uid:P003, name:Jacket, status:A, create_by:admin, create_date:2024-12-02 14:00:00, update_by:admin, update_date:2024-12-02 14:00:00'),
+(928, 'UPDATE', 'sms_brand_info', 1, '2024-12-10 02:47:44', 'uid:cd30ecce-6a94-11ef-aab7-80ce628923b2, name:SOC Foodi, details:SOC Brand, logo:assets/logo/66eaa4c083cc1.png, status:A, create_by:1010, create_date:2024-09-02 11:48:17, update_by:5, update_date:2024-09-18 16:00:32', 'uid:cd30ecce-6a94-11ef-aab7-80ce628923b2, name:Brand Beauty, details:SOC Foodi, logo:assets/logo/6757577024930.png, status:A, create_by:1010, create_date:2024-09-02 11:48:17, update_by:5, update_date:2024-12-10 02:47:44'),
+(929, 'UPDATE', 'sms_brand_info', 1, '2024-12-10 02:48:10', 'uid:cd30ecce-6a94-11ef-aab7-80ce628923b2, name:Brand Beauty, details:SOC Foodi, logo:assets/logo/6757577024930.png, status:A, create_by:1010, create_date:2024-09-02 11:48:17, update_by:5, update_date:2024-12-10 02:47:44', 'uid:cd30ecce-6a94-11ef-aab7-80ce628923b2, name:Brand Shop, details:Brand Beauty, logo:assets/logo/6757577024930.png, status:A, create_by:1010, create_date:2024-09-02 11:48:17, update_by:5, update_date:2024-12-10 02:48:10'),
+(930, 'UPDATE', 'users', 5, '2025-02-15 17:19:31', 'uid:4d33c03d-a283-4bc3-8322-4d5e7fa168de, name:Super1 Admin, address:232/1,South, Paik-Para,Mirpur,Dhaka, phone:01684924439, email:superadmin@gmail.com, status:A, email_verified_at:2024-09-04 13:04:32, updated_at:2024-12-10 01:05:06, latitude:23.7856607, longitude:90.3613702', 'uid:4d33c03d-a283-4bc3-8322-4d5e7fa168de, name:Super1 Admin, address:232/1,South, Paik-Para,Mirpur,Dhaka, phone:01684924439, email:superadmin@gmail.com, status:A, email_verified_at:2024-09-04 13:04:32, updated_at:2025-02-15 17:19:31, latitude:23.7857496, longitude:90.3613519'),
+(931, 'UPDATE', 'users', 10, '2025-02-15 17:21:00', NULL, NULL),
+(932, 'CREATE', 'sms_orders', 58, '2025-02-15 17:21:49', NULL, NULL),
+(933, 'CREATE', 'sms_order_dtl', 33, '2025-02-15 17:21:49', NULL, 'order_id:58, pro_id:12, quantity:1, price:200.00, total_price:200.00, special_request:, create_by:10, create_date:2025-02-15 17:21:49'),
+(934, 'UPDATE', 'users', 15, '2025-02-15 17:26:06', NULL, NULL),
+(935, 'UPDATE', 'users', 15, '2025-02-15 17:26:09', NULL, NULL),
+(936, 'UPDATE', 'users', 10, '2025-02-15 17:27:56', NULL, NULL),
+(937, 'UPDATE', 'users', 10, '2025-02-15 17:28:22', NULL, NULL),
+(938, 'CREATE', 'users', 17, '2025-02-15 17:30:47', NULL, NULL),
+(939, 'CREATE', 'roles', 9, '2025-02-15 17:31:20', NULL, 'name:Branch Keeper, guard_name:web, created_at:2025-02-15 17:31:20, updated_at:2025-02-15 17:31:20'),
+(940, 'UPDATE', 'users', 17, '2025-02-15 17:31:31', NULL, NULL),
+(941, 'UPDATE', 'users', 17, '2025-02-15 17:32:29', NULL, NULL),
+(942, 'UPDATE', 'users', 17, '2025-02-15 17:32:36', NULL, NULL),
+(943, 'CREATE', 'role_sidebar_menu', 72, '2025-02-15 17:32:55', NULL, 'role_id:9, sidebar_nav_id:34'),
+(944, 'CREATE', 'role_sidebar_menu', 73, '2025-02-15 17:33:08', NULL, 'role_id:9, sidebar_nav_id:35'),
+(945, 'UPDATE', 'users', 17, '2025-02-15 17:33:32', NULL, NULL),
+(946, 'UPDATE', 'users', 10, '2025-02-15 17:34:01', NULL, NULL),
+(947, 'UPDATE', 'users', 17, '2025-02-15 17:34:27', NULL, NULL),
+(948, 'CREATE', 'role_has_permissions', 65, '2025-02-15 17:34:57', NULL, 'role_id:9, permission_id:65'),
+(949, 'UPDATE', 'users', 17, '2025-02-15 17:35:19', NULL, NULL),
+(950, 'DELETE', 'role_has_permissions', 65, '2025-02-15 17:35:37', 'role_id:9, permission_id:65', NULL),
+(951, 'CREATE', 'role_has_permissions', 65, '2025-02-15 17:35:37', NULL, 'role_id:9, permission_id:65'),
+(952, 'CREATE', 'role_has_permissions', 66, '2025-02-15 17:35:37', NULL, 'role_id:9, permission_id:66'),
+(953, 'DELETE', 'role_has_permissions', 65, '2025-02-15 17:36:35', 'role_id:9, permission_id:65', NULL),
+(954, 'DELETE', 'role_has_permissions', 66, '2025-02-15 17:36:35', 'role_id:9, permission_id:66', NULL),
+(955, 'CREATE', 'role_has_permissions', 65, '2025-02-15 17:36:35', NULL, 'role_id:9, permission_id:65'),
+(956, 'CREATE', 'role_has_permissions', 66, '2025-02-15 17:36:35', NULL, 'role_id:9, permission_id:66'),
+(957, 'CREATE', 'role_has_permissions', 67, '2025-02-15 17:36:35', NULL, 'role_id:9, permission_id:67'),
+(958, 'UPDATE', 'users', 17, '2025-02-15 17:36:52', NULL, NULL),
+(959, 'DELETE', 'role_has_permissions', 65, '2025-02-15 17:37:14', 'role_id:9, permission_id:65', NULL),
+(960, 'DELETE', 'role_has_permissions', 66, '2025-02-15 17:37:14', 'role_id:9, permission_id:66', NULL),
+(961, 'DELETE', 'role_has_permissions', 67, '2025-02-15 17:37:14', 'role_id:9, permission_id:67', NULL),
+(962, 'CREATE', 'role_has_permissions', 65, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:65'),
+(963, 'CREATE', 'role_has_permissions', 66, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:66'),
+(964, 'CREATE', 'role_has_permissions', 67, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:67'),
+(965, 'CREATE', 'role_has_permissions', 69, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:69'),
+(966, 'CREATE', 'role_has_permissions', 70, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:70'),
+(967, 'CREATE', 'role_has_permissions', 71, '2025-02-15 17:37:14', NULL, 'role_id:9, permission_id:71'),
+(968, 'DELETE', 'role_has_permissions', 65, '2025-02-15 17:37:31', 'role_id:9, permission_id:65', NULL),
+(969, 'DELETE', 'role_has_permissions', 66, '2025-02-15 17:37:31', 'role_id:9, permission_id:66', NULL),
+(970, 'DELETE', 'role_has_permissions', 67, '2025-02-15 17:37:31', 'role_id:9, permission_id:67', NULL),
+(971, 'DELETE', 'role_has_permissions', 69, '2025-02-15 17:37:31', 'role_id:9, permission_id:69', NULL),
+(972, 'DELETE', 'role_has_permissions', 70, '2025-02-15 17:37:31', 'role_id:9, permission_id:70', NULL),
+(973, 'DELETE', 'role_has_permissions', 71, '2025-02-15 17:37:31', 'role_id:9, permission_id:71', NULL),
+(974, 'CREATE', 'role_has_permissions', 49, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:49'),
+(975, 'CREATE', 'role_has_permissions', 50, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:50'),
+(976, 'CREATE', 'role_has_permissions', 51, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:51'),
+(977, 'CREATE', 'role_has_permissions', 53, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:53'),
+(978, 'CREATE', 'role_has_permissions', 54, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:54'),
+(979, 'CREATE', 'role_has_permissions', 55, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:55'),
+(980, 'CREATE', 'role_has_permissions', 57, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:57'),
+(981, 'CREATE', 'role_has_permissions', 58, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:58'),
+(982, 'CREATE', 'role_has_permissions', 59, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:59'),
+(983, 'CREATE', 'role_has_permissions', 61, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:61'),
+(984, 'CREATE', 'role_has_permissions', 62, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:62'),
+(985, 'CREATE', 'role_has_permissions', 63, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:63'),
+(986, 'CREATE', 'role_has_permissions', 65, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:65'),
+(987, 'CREATE', 'role_has_permissions', 66, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:66'),
+(988, 'CREATE', 'role_has_permissions', 67, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:67'),
+(989, 'CREATE', 'role_has_permissions', 69, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:69'),
+(990, 'CREATE', 'role_has_permissions', 70, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:70'),
+(991, 'CREATE', 'role_has_permissions', 71, '2025-02-15 17:37:31', NULL, 'role_id:9, permission_id:71'),
+(992, 'DELETE', 'role_has_permissions', 49, '2025-02-15 18:02:53', 'role_id:9, permission_id:49', NULL),
+(993, 'DELETE', 'role_has_permissions', 50, '2025-02-15 18:02:53', 'role_id:9, permission_id:50', NULL),
+(994, 'DELETE', 'role_has_permissions', 51, '2025-02-15 18:02:53', 'role_id:9, permission_id:51', NULL),
+(995, 'DELETE', 'role_has_permissions', 53, '2025-02-15 18:02:53', 'role_id:9, permission_id:53', NULL),
+(996, 'DELETE', 'role_has_permissions', 54, '2025-02-15 18:02:53', 'role_id:9, permission_id:54', NULL),
+(997, 'DELETE', 'role_has_permissions', 55, '2025-02-15 18:02:53', 'role_id:9, permission_id:55', NULL),
+(998, 'DELETE', 'role_has_permissions', 57, '2025-02-15 18:02:53', 'role_id:9, permission_id:57', NULL),
+(999, 'DELETE', 'role_has_permissions', 58, '2025-02-15 18:02:53', 'role_id:9, permission_id:58', NULL),
+(1000, 'DELETE', 'role_has_permissions', 59, '2025-02-15 18:02:53', 'role_id:9, permission_id:59', NULL),
+(1001, 'DELETE', 'role_has_permissions', 61, '2025-02-15 18:02:53', 'role_id:9, permission_id:61', NULL),
+(1002, 'DELETE', 'role_has_permissions', 62, '2025-02-15 18:02:53', 'role_id:9, permission_id:62', NULL),
+(1003, 'DELETE', 'role_has_permissions', 63, '2025-02-15 18:02:53', 'role_id:9, permission_id:63', NULL),
+(1004, 'DELETE', 'role_has_permissions', 65, '2025-02-15 18:02:53', 'role_id:9, permission_id:65', NULL),
+(1005, 'DELETE', 'role_has_permissions', 66, '2025-02-15 18:02:53', 'role_id:9, permission_id:66', NULL),
+(1006, 'DELETE', 'role_has_permissions', 67, '2025-02-15 18:02:53', 'role_id:9, permission_id:67', NULL),
+(1007, 'DELETE', 'role_has_permissions', 69, '2025-02-15 18:02:53', 'role_id:9, permission_id:69', NULL),
+(1008, 'DELETE', 'role_has_permissions', 70, '2025-02-15 18:02:53', 'role_id:9, permission_id:70', NULL),
+(1009, 'DELETE', 'role_has_permissions', 71, '2025-02-15 18:02:53', 'role_id:9, permission_id:71', NULL),
+(1010, 'CREATE', 'role_has_permissions', 65, '2025-02-15 18:03:11', NULL, 'role_id:9, permission_id:65');
 
 -- --------------------------------------------------------
 
@@ -1449,7 +1596,8 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (4, 'Admin', 'web', '2024-09-04 01:06:53', '2024-09-04 01:06:53'),
 (5, 'Root', 'web', '2024-09-09 02:21:14', '2024-09-09 02:21:14'),
 (6, 'Branch Admin', 'web', '2024-09-22 10:28:45', '2024-09-22 10:28:45'),
-(7, 'Branch Manager', 'web', '2024-09-22 10:29:02', '2024-09-22 10:29:02');
+(7, 'Branch Manager', 'web', '2024-09-22 10:29:02', '2024-09-22 10:29:02'),
+(9, 'Branch Keeper', 'web', '2025-02-15 11:31:20', '2025-02-15 11:31:20');
 
 --
 -- Triggers `roles`
@@ -1611,6 +1759,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (65, 5),
 (65, 6),
 (65, 7),
+(65, 9),
 (66, 4),
 (66, 5),
 (66, 6),
@@ -1749,7 +1898,9 @@ INSERT INTO `role_sidebar_menu` (`id`, `role_id`, `sidebar_nav_id`) VALUES
 (68, 6, 61),
 (69, 6, 62),
 (70, 5, 63),
-(71, 5, 64);
+(71, 5, 64),
+(72, 9, 34),
+(73, 9, 35);
 
 --
 -- Triggers `role_sidebar_menu`
@@ -1876,7 +2027,7 @@ CREATE TABLE `sms_brand_info` (
 --
 
 INSERT INTO `sms_brand_info` (`id`, `uid`, `name`, `details`, `logo`, `status`, `create_by`, `create_date`, `update_by`, `update_date`) VALUES
-(1, 'cd30ecce-6a94-11ef-aab7-80ce628923b2', 'SOC Foodi', 'SOC Brand', 'assets/logo/66eaa4c083cc1.png', 'A', '1010', '2024-09-02 11:48:17', '5', '2024-09-18 16:00:32');
+(1, 'cd30ecce-6a94-11ef-aab7-80ce628923b2', 'Brand Shop', 'Brand Beauty', 'assets/logo/6757577024930.png', 'A', '1010', '2024-09-02 11:48:17', '5', '2024-12-10 02:48:10');
 
 --
 -- Triggers `sms_brand_info`
@@ -1921,6 +2072,33 @@ CREATE TRIGGER `after_sms_brand_info_update` AFTER UPDATE ON `sms_brand_info` FO
 END
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_color`
+--
+
+CREATE TABLE `sms_color` (
+  `id` bigint(10) NOT NULL,
+  `pro_type_id` bigint(10) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
+  `create_date` varchar(20) DEFAULT NULL,
+  `update_by` varchar(20) DEFAULT NULL,
+  `update_date` varchar(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sms_color`
+--
+
+INSERT INTO `sms_color` (`id`, `pro_type_id`, `name`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(1, 101, 'Red', 'admin', '2024-12-01 10:00:00', 'admin', '2024-12-01 10:00:00', 'A'),
+(2, 101, 'Blue', 'admin', '2024-12-01 10:05:00', 'admin', '2024-12-01 10:05:00', 'A'),
+(3, 102, 'Green', 'admin', '2024-12-02 14:00:00', 'admin', '2024-12-02 14:00:00', 'A'),
+(4, 102, 'Black', 'admin', '2024-12-02 14:10:00', 'admin', '2024-12-02 14:10:00', 'A');
 
 -- --------------------------------------------------------
 
@@ -2060,7 +2238,8 @@ INSERT INTO `sms_orders` (`id`, `order_number`, `order_date`, `cust_id`, `total_
 (54, 'ORD-1731224910', '2024-11-10 07:48:30', 24, 610.00, 60.00, 50.00, 1000.00, -390.00, 'A', 'A', 'Cash', NULL, '5', '2024-11-10 13:48:30', NULL, NULL),
 (55, 'ORD-1731225009', '2024-11-10 07:50:09', 9, 660.00, 60.00, 0.00, 1000.00, -340.00, 'A', 'A', 'Cash', NULL, '5', '2024-11-10 13:50:09', NULL, NULL),
 (56, 'ORD-1731907568', '2024-11-18 05:26:08', 9, 420.00, 40.00, 20.00, 500.00, -80.00, 'A', 'A', 'Cash', NULL, '10', '2024-11-18 11:26:08', NULL, NULL),
-(57, 'ORD-1733718826', '2024-12-09 04:33:46', 25, 440.00, 40.00, 0.00, 0.00, 440.00, 'A', 'A', 'Cash', NULL, '5', '2024-12-09 10:33:46', NULL, NULL);
+(57, 'ORD-1733718826', '2024-12-09 04:33:46', 25, 440.00, 40.00, 0.00, 0.00, 440.00, 'A', 'A', 'Cash', NULL, '5', '2024-12-09 10:33:46', NULL, NULL),
+(58, 'ORD-1739618509', '2025-02-15 11:21:49', 9, 210.00, 20.00, 10.00, 500.00, -290.00, 'A', 'A', 'Cash', NULL, '10', '2025-02-15 17:21:49', NULL, NULL);
 
 --
 -- Triggers `sms_orders`
@@ -2174,7 +2353,8 @@ INSERT INTO `sms_order_dtl` (`id`, `order_id`, `pro_id`, `quantity`, `price`, `t
 (29, 55, 20, 1, 200.00, 200.00, '', '5', '2024-11-10 13:50:09', NULL, NULL),
 (30, 56, 17, 1, 200.00, 200.00, '', '10', '2024-11-18 11:26:08', NULL, NULL),
 (31, 56, 22, 1, 200.00, 200.00, '', '10', '2024-11-18 11:26:08', NULL, NULL),
-(32, 57, 14, 2, 200.00, 400.00, '', '5', '2024-12-09 10:33:46', NULL, NULL);
+(32, 57, 14, 2, 200.00, 400.00, '', '5', '2024-12-09 10:33:46', NULL, NULL),
+(33, 58, 12, 1, 200.00, 200.00, '', '10', '2025-02-15 17:21:49', NULL, NULL);
 
 --
 -- Triggers `sms_order_dtl`
@@ -2630,7 +2810,10 @@ INSERT INTO `sms_protype` (`id`, `uid`, `name`, `status`, `create_by`, `create_d
 (15, 'b563977e-cb52-4dbd-9b7f-62290e7e50c0', 'Cake', 'A', '5', '2024-09-25 14:55:26', NULL, NULL),
 (16, '2a7a4c6f-6fe3-4931-903c-255cc3d1eb09', 'Bread', 'A', '5', '2024-09-25 15:26:41', NULL, NULL),
 (17, '670098dd-f1b4-46e8-9d99-6894b748f4b8', 'Cold Drinks', 'A', '5', '2024-09-25 15:31:13', NULL, NULL),
-(18, '1924bf5f-8f59-434c-a1dc-e97d350fe85b', 'Pastry', 'A', '5', '2024-09-25 15:39:27', NULL, NULL);
+(18, '1924bf5f-8f59-434c-a1dc-e97d350fe85b', 'Pastry', 'A', '5', '2024-09-25 15:39:27', NULL, NULL),
+(101, 'P001', 'T-Shirt', 'A', 'admin', '2024-12-01 09:00:00', 'admin', '2024-12-01 09:00:00'),
+(102, 'P002', 'Jeans', 'A', 'admin', '2024-12-01 09:10:00', 'admin', '2024-12-01 09:10:00'),
+(103, 'P003', 'Jacket', 'A', 'admin', '2024-12-02 14:00:00', 'admin', '2024-12-02 14:00:00');
 
 --
 -- Triggers `sms_protype`
@@ -2680,8 +2863,8 @@ DELIMITER ;
 
 CREATE TABLE `sms_purchases` (
   `id` bigint(20) NOT NULL,
-  `Purchase_ID` varchar(50) NOT NULL,
   `Product_ID` varchar(50) DEFAULT NULL,
+  `pro_type` bigint(20) DEFAULT NULL,
   `Category_ID` varchar(50) DEFAULT NULL,
   `Sub_Category_ID` varchar(50) DEFAULT NULL,
   `Vendor_ID` varchar(50) DEFAULT NULL,
@@ -2702,6 +2885,40 @@ CREATE TABLE `sms_purchases` (
   `update_date` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sms_purchases`
+--
+
+INSERT INTO `sms_purchases` (`id`, `Product_ID`, `pro_type`, `Category_ID`, `Sub_Category_ID`, `Vendor_ID`, `Challan_Number`, `Unit`, `Color`, `Size`, `Purchase_Qty`, `Purchase_Rate`, `Sales_Rate`, `Purchase_Payment_Type`, `Purchase_Date`, `image`, `status`, `create_by`, `create_date`, `update_by`, `update_date`) VALUES
+(3, '12', 101, '2', '1', '1', 'TESTA22', 'KG', '1', '2', 5, 500, 550, 'Cash', '2024-12-10', 'assets/purchase_img/675753c743a2a.jpg', 'A', '5', '2024-12-10 02:32:07', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_size`
+--
+
+CREATE TABLE `sms_size` (
+  `id` bigint(10) NOT NULL,
+  `pro_type_id` bigint(10) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
+  `create_date` varchar(20) DEFAULT NULL,
+  `update_by` varchar(20) DEFAULT NULL,
+  `update_date` varchar(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sms_size`
+--
+
+INSERT INTO `sms_size` (`id`, `pro_type_id`, `name`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(1, 101, 'Small', 'admin', '2024-12-01 10:00:00', 'admin', '2024-12-01 10:00:00', 'A'),
+(2, 101, 'Medium', 'admin', '2024-12-01 10:05:00', 'admin', '2024-12-01 10:05:00', 'A'),
+(3, 102, 'Large', 'admin', '2024-12-02 14:00:00', 'admin', '2024-12-02 14:00:00', 'A'),
+(4, 102, 'Extra Large', 'admin', '2024-12-02 14:10:00', 'admin', '2024-12-02 14:10:00', 'A');
+
 -- --------------------------------------------------------
 
 --
@@ -2712,7 +2929,7 @@ CREATE TABLE `sms_stock` (
   `id` bigint(20) NOT NULL,
   `Purchase_ID` varchar(50) DEFAULT NULL,
   `Product_ID` varchar(50) DEFAULT NULL,
-  `Purchase_SN` varchar(50) NOT NULL,
+  `pro_qrcode` varchar(255) NOT NULL,
   `Category_ID` varchar(50) DEFAULT NULL,
   `Sub_Category_ID` varchar(50) DEFAULT NULL,
   `Purchase_Date` varchar(50) DEFAULT NULL,
@@ -2723,6 +2940,48 @@ CREATE TABLE `sms_stock` (
   `update_date` varchar(50) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sms_stock`
+--
+
+INSERT INTO `sms_stock` (`id`, `Purchase_ID`, `Product_ID`, `pro_qrcode`, `Category_ID`, `Sub_Category_ID`, `Purchase_Date`, `create_by`, `create_date`, `Invoice_ID`, `update_by`, `update_date`, `status`) VALUES
+(1, '3', '12', '5d9f5c30-6f26-493f-9697-e8f3422290ef', '2', '1', '2024-12-10 02:32:07', '5', '2024-12-10 02:32:07', NULL, NULL, NULL, 'A'),
+(2, '3', '12', '9daf09f3-6b44-4080-a074-8673807b9c72', '2', '1', '2024-12-10 02:32:07', '5', '2024-12-10 02:32:07', NULL, NULL, NULL, 'A'),
+(3, '3', '12', 'c4c61340-5448-4358-9991-49f0db176343', '2', '1', '2024-12-10 02:32:07', '5', '2024-12-10 02:32:07', NULL, NULL, NULL, 'A'),
+(4, '3', '12', '9524eac5-6c5d-4fcc-ac51-baa1d65e3023', '2', '1', '2024-12-10 02:32:07', '5', '2024-12-10 02:32:07', NULL, NULL, NULL, 'A'),
+(5, '3', '12', 'e008ae7c-6b79-4c6d-8006-601d3f5ce756', '2', '1', '2024-12-10 02:32:07', '5', '2024-12-10 02:32:07', NULL, NULL, NULL, 'A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_vendor`
+--
+
+CREATE TABLE `sms_vendor` (
+  `id` bigint(10) NOT NULL,
+  `vendor_name` varchar(100) DEFAULT NULL,
+  `vendor_phone` varchar(20) DEFAULT NULL,
+  `vendor_email` varchar(50) DEFAULT NULL,
+  `vendor_photo` varchar(255) DEFAULT NULL,
+  `vendor_address` varchar(255) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
+  `create_date` varchar(20) DEFAULT NULL,
+  `update_by` varchar(20) DEFAULT NULL,
+  `update_date` varchar(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sms_vendor`
+--
+
+INSERT INTO `sms_vendor` (`id`, `vendor_name`, `vendor_phone`, `vendor_email`, `vendor_photo`, `vendor_address`, `create_by`, `create_date`, `update_by`, `update_date`, `status`) VALUES
+(1, 'Tech Solutions Ltd.', '+1-800-1234567', 'contact@techsolutions.com', 'vendor_photo_1.jpg', '123 Tech Lane, Silicon Valley, CA, USA', 'admin', '2024-11-20 10:00:00', 'admin', 'info updated', 'A'),
+(2, 'Green Earth Supplies', '+1-800-2345678', 'info@greenearth.com', 'vendor_photo_2.jpg', '45 Eco Road, Green City, TX, USA', 'admin', '2024-11-22 11:15:00', 'admin', 'no update', 'A'),
+(3, 'Gourmet Foods Inc.', '+1-800-3456789', 'support@gourmetfoods.com', 'vendor_photo_3.jpg', '789 Flavor St, Gourmet Town, NY, USA', 'admin', '2024-12-01 14:00:00', 'admin', 'info updated', 'A'),
+(4, 'Fashion Apparel Co.', '+1-800-4567890', 'sales@fashionapparel.com', 'vendor_photo_4.jpg', '101 Fashion Ave, New York, NY, USA', 'admin', '2024-12-03 16:30:00', 'admin', 'no update', 'A'),
+(5, 'Furniture Makers LLC', '+1-800-5678901', 'contact@furnituremakers.com', 'vendor_photo_5.jpg', '200 Wood Rd, Oak City, IL, USA', 'admin', '2024-12-05 09:45:00', 'admin', 'info updated', 'A');
 
 -- --------------------------------------------------------
 
@@ -2858,9 +3117,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `uid`, `name`, `phone`, `email`, `address`, `status`, `profile_image`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `latitude`, `longitude`) VALUES
-(5, '4d33c03d-a283-4bc3-8322-4d5e7fa168de', 'Super1 Admin', '01684924439', 'superadmin@gmail.com', '232/1,South, Paik-Para,Mirpur,Dhaka', 'A', 'assets/profile_img/66f13d355f119.png', '2024-09-04 07:04:32', '$2y$10$kvKVOhFUF4ZZHlHfGhtgHe9muYMrgux4F5Ok0o5dql2y0UHdMElBm', NULL, '2024-09-04 07:04:32', '2024-12-09 12:54:16', '23.7426391', '90.4138132'),
-(10, 'a535c002-8e92-4157-a1fa-4216013d5bc0', 'Branch 1 Manager', '01222222', 'branch1manager@gmail.com', 'Mirpur-1,Dhaka,Bangladesh', NULL, '', NULL, '$2y$10$72mKMMGEbjM/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu', NULL, '2024-09-19 10:07:25', '2024-11-18 05:25:28', '23.7426456', '90.4137934'),
-(15, 'ee3b36b9-dd00-402f-88ba-7ce49edcf404', 'Dhali Abir', '01684924439', 'dhaliabir404@gmail.com', 'Mirpur-1,Dhaka,Bangladesh', NULL, 'assets/profile_img/66f13d06cd000.png', NULL, '$2y$10$3/ZOSlF4AR98FWVqO6Xz9O2P1vCHRMy1bfm4WM7XV7acemRSLkp1S', NULL, '2024-09-22 11:36:18', '2024-10-16 06:25:12', '23.7426347', '90.4137908');
+(5, '4d33c03d-a283-4bc3-8322-4d5e7fa168de', 'Super1 Admin', '01684924439', 'superadmin@gmail.com', '232/1,South, Paik-Para,Mirpur,Dhaka', 'A', 'assets/profile_img/66f13d355f119.png', '2024-09-04 07:04:32', '$2y$10$kvKVOhFUF4ZZHlHfGhtgHe9muYMrgux4F5Ok0o5dql2y0UHdMElBm', NULL, '2024-09-04 07:04:32', '2025-02-15 11:19:31', '23.7857496', '90.3613519'),
+(10, 'a535c002-8e92-4157-a1fa-4216013d5bc0', 'Branch 1 Manager', '01222222', 'branch1manager@gmail.com', 'Mirpur-1,Dhaka,Bangladesh', NULL, 'assets/profile_img/67b07a565cfa6.jpg', NULL, '$2y$10$72mKMMGEbjM/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu', NULL, '2024-09-19 10:07:25', '2025-02-15 11:34:01', '23.7857558', '90.3613491'),
+(15, 'ee3b36b9-dd00-402f-88ba-7ce49edcf404', 'Dhali Abir', '01684924439', 'dhaliabir404@gmail.com', 'Mirpur-1,Dhaka,Bangladesh', NULL, 'assets/profile_img/66f13d06cd000.png', NULL, '$2y$10$72mKMMGEbjM/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu', NULL, '2024-09-22 11:36:18', '2025-02-15 11:26:09', '23.7857672', '90.3613357'),
+(17, '6fe758f7-fd7c-4ad3-a8e9-298381e9961f', 'Arsenio Mercer', '7456456456', 'luroxylar@mailinator.com', 'Minima minima aut cu', NULL, NULL, NULL, '$2y$10$72mKMMGEbjM/mGE.3jn0yOYWjzbrxhbNM2EvwkhKlEFSa2lN46Gcu', NULL, '2025-02-15 11:30:47', '2025-02-15 11:36:52', '23.785758', '90.3613488');
 
 --
 -- Triggers `users`
@@ -3096,7 +3356,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -3108,7 +3368,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `operationlogs`
 --
 ALTER TABLE `operationlogs`
-  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=921;
+  MODIFY `LogID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -3126,13 +3386,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `role_sidebar_menu`
 --
 ALTER TABLE `role_sidebar_menu`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `sms_branch_info`
@@ -3150,19 +3410,19 @@ ALTER TABLE `sms_brand_info`
 -- AUTO_INCREMENT for table `sms_customers`
 --
 ALTER TABLE `sms_customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `sms_orders`
 --
 ALTER TABLE `sms_orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `sms_order_dtl`
 --
 ALTER TABLE `sms_order_dtl`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `sms_probrand`
@@ -3192,19 +3452,19 @@ ALTER TABLE `sms_prosubcategory`
 -- AUTO_INCREMENT for table `sms_protype`
 --
 ALTER TABLE `sms_protype`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `sms_purchases`
 --
 ALTER TABLE `sms_purchases`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sms_stock`
 --
 ALTER TABLE `sms_stock`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sms_web_sidebar_menu`
@@ -3216,7 +3476,7 @@ ALTER TABLE `sms_web_sidebar_menu`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
